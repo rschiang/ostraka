@@ -48,6 +48,7 @@ Window {
         }
 
         Rectangle {
+            id: titleRect
             Layout.column: 1
             Layout.row: 3
             Layout.rowSpan: 2
@@ -56,10 +57,20 @@ Window {
             color: "orange"
 
             Text {
-                anchors.fill: parent
+                id: titleLabel
                 font.pointSize: 112
-                fontSizeMode: Text.Fit
+                font.weight: Font.Bold
+                font.letterSpacing: -5
+                color: "white"
                 text: app.titleText
+
+                transformOrigin: Item.TopLeft
+                transform: [
+                    Scale {
+                        xScale: Math.min(titleLabel.parent.width / titleLabel.contentWidth, 1)
+                        yScale: titleLabel.parent.height / titleLabel.contentHeight
+                    }
+                ]
             }
         }
 
