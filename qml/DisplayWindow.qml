@@ -35,8 +35,8 @@ Window {
                 height: table.height / 3
                 candidateName: "彭臥言"
                 partyColor: "#0288D1"
-                majorUnit: 689
-                minorUnit: 5284
+                majorUnit: 609
+                minorUnit: 902
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
             CandidateItem {
@@ -44,20 +44,28 @@ Window {
                 height: table.height / 3
                 candidateName: "彭仰言"
                 partyColor: "#E64A19"
-                majorUnit: 689
-                minorUnit: 5284
+                majorUnit: 15
+                minorUnit: 1030
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
         }
 
         Rectangle {
             id: chart
+            width: table.width / 3
+            height: table.height
         }
 
         Rectangle {
+            id: chart2
             width: table.width / 3
             height: table.height
-            color: "azure"
+
+            Row {
+                anchors.bottom: parent.bottom
+                width: parent.width
+                height: parent.height / 3
+            }
         }
     }
 
