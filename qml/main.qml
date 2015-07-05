@@ -7,6 +7,13 @@ QtObject {
     property string titleText
     property string marqueeText
 
+    // Models
+    property list<PartyModel> parties: [
+        PartyModel { id: party1 },
+        PartyModel { id: party2 },
+        PartyModel { id: party3 }
+    ]
+
     // Functions
     function spawn(screen, proto) {
         if (!proto)
@@ -27,6 +34,11 @@ QtObject {
 
     // Events
     Component.onCompleted: {
+        var settings = JSON.parse(Native.readFile('/Users/Shared/ostraka.json'))
+        party1.load(settings.party1)
+        party2.load(settings.party2)
+        party3.load(settings.party3)
+
         var screens = Native.getScreens()
         var primaryScreen = Native.getPrimaryScreen()
 

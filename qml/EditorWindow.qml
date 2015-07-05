@@ -33,51 +33,71 @@ Window {
             onTextChanged: app.titleText = text
         }
 
-        Row {
+        Column {
             width: parent.width
 
-            Column {
-                width: parent.width / 2
+            Repeater {
+                model: 3
 
-                Repeater {
-                    model: 3
+                Row {
+                    width: parent.width
+
                     SpinBox {
-                        width: parent.width
+                        id: ballotSpin
+                        width: parent.width / 6
+                        font.pointSize: 14
+                        decimals: 0
+                        minimumValue: 0
+                        maximumValue: 999
+                        stepSize: 1
+                        suffix: " 選票"
+                        onValueChanged: {
+                            var ballots = value * 53000 + Math.round(Math.random() * 500)
+                            majorSpin.value = Math.floor(ballots / 10000)
+                            minorSpin.value = ballots % 10000
+                            candidatePercentSpin.value = Math.round(ballots * 100 / 6891139)
+                        }
+                    }
+
+                    SpinBox {
+                        id: majorSpin
+                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
                         maximumValue: 689
                         stepSize: 1
                         suffix: " 萬"
-                    }
-                }
-            }
-
-            Column {
-                width: parent.width / 2
-
-                Repeater {
-                    model: 3
-
-                    Row {
-                        width: parent.width
-
-                        SpinBox {
-                            id: delegateSpinBox
-                            width: parent.width / 2
-                            font.pointSize: 14
-                            decimals: 0
-                            minimumValue: 0
-                            maximumValue: 689
-                            stepSize: 1
-                            onValueChanged: delegatePercentage.text = value + "%"
+                        onValueChanged: {
+                            app.parties[index].majorUnit = value
                         }
+                    }
 
-                        TextField {
-                            id: delegatePercentage
-                            width: parent.width / 2
-                            font.pointSize: 14
-                            text: "9.2%"
+                    SpinBox {
+                        id: minorSpin
+                        width: parent.width / 6
+                        font.pointSize: 14
+                        decimals: 0
+                        minimumValue: 0
+                        maximumValue: 9999
+                        stepSize: 1
+                        suffix: " 票"
+                        onValueChanged: {
+                            app.parties[index].minorUnit = value
+                        }
+                    }
+
+                    SpinBox {
+                        id: candidatePercentSpin
+                        width: parent.width / 6
+                        font.pointSize: 14
+                        decimals: 0
+                        minimumValue: 0
+                        maximumValue: 100
+                        stepSize: 1
+                        suffix: " %"
+                        onValueChanged: {
+                            app.parties[index].candidatePercentage = value / 100.0
                         }
                     }
                 }

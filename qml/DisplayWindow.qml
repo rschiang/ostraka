@@ -28,31 +28,31 @@ Window {
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
-                candidateName: "彭立言"
-                partyColor: "#388E3C"
-                majorUnit: 689
-                minorUnit: 5284
-                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+                candidateName: party1.candidateName
+                partyColor: party1.partyColor
+                majorUnit: party1.majorUnit
+                minorUnit: party1.minorUnit
+                avatar: party1.candidateSource
             }
 
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
-                candidateName: "彭臥言"
-                partyColor: "#0288D1"
-                majorUnit: 609
-                minorUnit: 902
-                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+                candidateName: party2.candidateName
+                partyColor: party2.partyColor
+                majorUnit: party2.majorUnit
+                minorUnit: party2.minorUnit
+                avatar: party2.candidateSource
             }
 
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
-                candidateName: "彭仰言"
-                partyColor: "#E64A19"
-                majorUnit: 15
-                minorUnit: 1030
-                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+                candidateName: party3.candidateName
+                partyColor: party3.partyColor
+                majorUnit: party3.majorUnit
+                minorUnit: party3.minorUnit
+                avatar: party3.candidateSource
             }
         }
 
@@ -91,31 +91,31 @@ Window {
                 PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    partyName: "綠綠黨"
-                    partyColor: "#388E3C"
-                    seats: 27
-                    percentage: 0.54
-                    flagSource: "file:///Users/RSChiang/Desktop/party1.jpg"
+                    partyName: party1.partyName
+                    partyColor: party1.partyColor
+                    seats: party1.seats
+                    percentage: party1.seatPercentage
+                    flagSource: party1.flagSource
                 }
 
                 PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    partyName: "藍藍黨"
-                    partyColor: "#0288d1"
-                    seats: 14
-                    percentage: 0.28
-                    flagSource: "file:///Users/RSChiang/Desktop/party2.jpg"
+                    partyName: party2.partyName
+                    partyColor: party2.partyColor
+                    seats: party2.seats
+                    percentage: party2.seatPercentage
+                    flagSource: party2.flagSource
                 }
 
                 PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    partyName: "橘橘黨"
-                    partyColor: "#e64a19"
-                    seats: 9
-                    percentage: 0.18
-                    flagSource: "file:///Users/RSChiang/Desktop/party3.png"
+                    partyName: party3.partyName
+                    partyColor: party3.partyColor
+                    seats: party3.seats
+                    percentage: party3.seatPercentage
+                    flagSource: party3.flagSource
                 }
             }
         }

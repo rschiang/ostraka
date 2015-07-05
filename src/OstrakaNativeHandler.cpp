@@ -23,3 +23,16 @@ void OstrakaNativeHandler::setScreen(QWindow *window, QScreen *screen) {
     window->setScreen(screen);
     window->setGeometry(screen->availableGeometry());
 }
+
+QString OstrakaNativeHandler::readFile(QString path) {
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly)) {
+        return "";
+    }
+
+    QTextStream in(&file);
+    QString result = in.readAll();
+
+    file.close();
+    return result;
+}

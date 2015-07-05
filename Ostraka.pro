@@ -29,4 +29,5 @@ mac {
 
 DISTFILES += \
     qml/CandidateItem.qml \
-    qml/PartyItem.qml
+    qml/PartyItem.qml \
+    qml/PartyModel.qml
