@@ -223,12 +223,38 @@ Window {
             Row {
                 id: marqueeItems
                 height: parent.height
+                spacing: 16
 
                 Repeater {
                     model: party1.seatCandidates
 
                     SeatItem {
+                        seatName: modelData
+                        partyColor: party1.partyColor
+                        flagSource: party1.flagSource
+                        elected: index < party1.seats
+                    }
+                }
 
+                Repeater {
+                    model: party2.seatCandidates
+
+                    SeatItem {
+                        seatName: modelData
+                        partyColor: party2.partyColor
+                        flagSource: party2.flagSource
+                        elected: index < party2.seats
+                    }
+                }
+
+                Repeater {
+                    model: party3.seatCandidates
+
+                    SeatItem {
+                        seatName: modelData
+                        partyColor: party3.partyColor
+                        flagSource: party3.flagSource
+                        elected: index < party3.seats
                     }
                 }
             }
@@ -237,9 +263,9 @@ Window {
                 target: marqueeItems
                 property: "x"
                 from: window.width
-                to: -(window.width)
+                to: -(marqueeItems.width + window.width)
                 loops: Animation.Infinite
-                duration: 10000
+                duration: marqueeItems.width / window.width * 10000
                 running: true
             }
         }

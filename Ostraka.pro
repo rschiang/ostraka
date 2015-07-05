@@ -26,8 +26,3 @@ mac {
         QMAKE_POST_LINK += macdeployqt Ostraka.app -qmldir=../ostraka/qml/ -verbose=1 -dmg;
     }
 }
-
-DISTFILES += \
-    qml/CandidateItem.qml \
-    qml/PartyItem.qml \
-    qml/PartyModel.qml
