@@ -272,6 +272,21 @@ Window {
                 }
             }
 
+            Text {
+                id: marqueeTitle
+                width: parent.width
+                height: marquee.height
+                anchors.top: marqueeItems.bottom
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+                font.pointSize: 56
+                font.letterSpacing: 2
+                font.family: "Apple LiGothic"
+                color: "white"
+                text: "中華民國不分區立委"
+            }
+
             NumberAnimation {
                 id: scrollMarqueeEffect
                 target: marqueeItems
@@ -282,9 +297,11 @@ Window {
                 duration: 1000
                 onStopped: {
                     from = to
-                    if (-from >= marqueeItems.height)
-                        from = marquee.height
                     to = from - marquee.height
+                    if (-to >= marqueeItems.height) {
+                        from = marquee.height
+                        to = 0
+                    }
                 }
             }
 

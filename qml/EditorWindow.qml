@@ -108,6 +108,7 @@ Window {
                         minimumValue: 0
                         maximumValue: app.totalSeats
                         stepSize: 1
+                        suffix: "席"
                         onValueChanged: {
                             app.parties[index].seats = value
                             seatPercentageSpin.value = value * 100 / app.totalSeats
