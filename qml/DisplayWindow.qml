@@ -88,22 +88,34 @@ Window {
             Row {
                 height: table.height / 3
 
-                Rectangle {
+                PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    color: "#388E3C"
+                    partyName: "綠綠黨"
+                    partyColor: "#388E3C"
+                    seats: 27
+                    percentage: 0.54
+                    flagSource: "file:///Users/RSChiang/Desktop/party1.jpg"
                 }
 
-                Rectangle {
+                PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    color: "#0288d1"
+                    partyName: "藍藍黨"
+                    partyColor: "#0288d1"
+                    seats: 14
+                    percentage: 0.28
+                    flagSource: "file:///Users/RSChiang/Desktop/party2.jpg"
                 }
 
-                Rectangle {
+                PartyItem {
                     width: table.width * (2 / 9)
                     height: parent.height
-                    color: "#e64a19"
+                    partyName: "橘橘黨"
+                    partyColor: "#e64a19"
+                    seats: 9
+                    percentage: 0.18
+                    flagSource: "file:///Users/RSChiang/Desktop/party3.png"
                 }
             }
         }
