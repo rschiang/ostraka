@@ -21,6 +21,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
             font.pixelSize: 45
+            font.family: "Apple LiGothic"
             color: "white"
             text: updateText(root.candidateName)
 
@@ -71,6 +72,7 @@ Item {
             font.pointSize: 56
             font.weight: Font.DemiBold
             font.letterSpacing: -10
+            font.family: "Hiragino Sans GB"
             color: root.partyColor
             text: "萬"
             transformOrigin: Item.TopLeft

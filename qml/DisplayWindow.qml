@@ -37,7 +37,7 @@ Window {
         }
 
         Rectangle {
-
+            id: chart
         }
 
         Rectangle {
@@ -61,6 +61,7 @@ Window {
             font.pointSize: 112
             font.weight: Font.Bold
             font.letterSpacing: -5
+            font.family: "Hiragino Kaku Gothic ProN W6"
             color: "black"
             text: app.titleText
 
@@ -91,6 +92,7 @@ Window {
             fontSizeMode: Text.Fit
             font.pointSize: 45
             font.weight: Font.DemiBold
+            font.letterSpacing: 2
             font.family: "Avenir Next Condensed"
             color: "white"
             text: "12:07:05"
