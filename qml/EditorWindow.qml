@@ -1,6 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.2
+import QtQuick.Layouts 1.1
 
 Window {
     id: window
@@ -28,6 +29,7 @@ Window {
             font.pointSize: 21
             font.weight: Font.DemiBold
             placeholderText: "震驚！舟山河親水樂園捕獲鯰魚"
+            onTextChanged: app.titleText = text
         }
 
         Row {
@@ -84,9 +86,10 @@ Window {
         TextArea {
             id: marqueeField
             width: parent.width
-            height: 90
+            Layout.fillHeight: true
             font.pointSize: 14
             text: "跑馬燈這裡要放總共最多十五個字"
+            onTextChanged: app.marqueeText = text
         }
     }
 }

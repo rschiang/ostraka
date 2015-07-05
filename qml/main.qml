@@ -4,9 +4,8 @@ QtObject {
     id: app
 
     // Properties
-    property string text
-    property string theme
-    property string mode
+    property string titleText
+    property string marqueeText
 
     // Functions
     function spawn(screen, proto) {
