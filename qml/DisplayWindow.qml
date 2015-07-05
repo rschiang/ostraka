@@ -11,44 +11,45 @@ Window {
         window.flags |= Qt.WindowDoesNotAcceptFocus
     }
 
-    GridLayout {
+    Row {
+        id: table
         anchors {
             top: parent.top
             bottom: titleBar.top
             left: parent.left
             right: parent.right
         }
-        rows: 3
-        columns: 3
 
-        Repeater {
-            model: 3
-            Rectangle {
-                Layout.column: 0
-                Layout.row: index
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                color: Qt.rgba(0.4 + 0.3 * index, 0.3 + 0.2 * index, 0.6 + 0.2 * index, 1)
+        Column {
+            Repeater {
+                model: 3
+
+                CandidateItem {
+                    width: table.width / 3
+                    height: table.height / 3
+                    candidateName: "彭立言"
+                    partyColor: "#388E3C"
+                    majorUnit: 689
+                    minorUnit: 4886
+                    avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+                }
             }
         }
 
-        Repeater {
-            model: 3
-            Rectangle {
-                Layout.column: 1
-                Layout.row: index
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                color: Qt.lighter("#2d7500", 1 + 0.2 * index)
+        Column {
+            Repeater {
+                model: 3
+                Rectangle {
+                    width: table.width / 3
+                    height: table.height / 3
+                    color: Qt.lighter("#2d7500", 1 + 0.2 * index)
+                }
             }
         }
 
         Rectangle {
-            Layout.column: 2
-            Layout.row: 0
-            Layout.rowSpan: 3
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            width: table.width / 3
+            height: table.height
             color: "azure"
         }
     }
@@ -115,6 +116,35 @@ Window {
                 clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
                              (minute >= 10 ? minute : "0" + minute) + ":" +
                              (second >= 10 ? second : "0" + second)
+            }
+        }
+
+        Item {
+            id: marquee
+            height: parent.height
+            anchors.left: clock.right
+            anchors.right: parent.right
+            clip: true
+
+            Row {
+                id: marqueeItems
+                anchors.verticalCenter: parent.verticalCenter
+
+                Text {
+                    color: "white"
+                    font.pointSize: 56
+                    text: app.marqueeText
+                }
+            }
+
+            NumberAnimation {
+                target: marqueeItems
+                property: "x"
+                from: marquee.width
+                to: -(marquee.width)
+                loops: Animation.Infinite
+                duration: 3000
+                running: true
             }
         }
     }
