@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     app.setOrganizationName("NTUOSC");
     app.setOrganizationDomain("ostraka.ntuosc.org");
 
-    LitNativeHandler native(&app);
+    OstrakaNativeHandler native(&app);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("Native", &native);

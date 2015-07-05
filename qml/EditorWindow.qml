@@ -67,9 +67,11 @@ Window {
                             minimumValue: 0
                             maximumValue: 689
                             stepSize: 1
+                            onValueChanged: delegatePercentage.text = value + "%"
                         }
 
-                        TextBox {
+                        TextField {
+                            id: delegatePercentage
                             width: parent.width / 2
                             font.pointSize: 14
                             text: "9.2%"
@@ -82,9 +84,9 @@ Window {
         TextArea {
             id: marqueeField
             width: parent.width
-            height: 56
+            height: 90
             font.pointSize: 14
-            placeholderText: "跑馬燈這裡要放總共最多十五個字"
+            text: "跑馬燈這裡要放總共最多十五個字"
         }
     }
 }
