@@ -61,7 +61,7 @@ Window {
                 font.pointSize: 112
                 font.weight: Font.Bold
                 font.letterSpacing: -5
-                color: "white"
+                color: "black"
                 text: app.titleText
 
                 transformOrigin: Item.TopLeft
@@ -81,6 +81,45 @@ Window {
             Layout.fillWidth: true
             Layout.fillHeight: true
             color: "maroon"
+        }
+    }
+
+    Rectangle {
+        id: statusBar
+        width: parent.width
+        height: parent.height * 0.1
+        anchors.bottom: parent.bottom
+        color: "black"
+
+        Text {
+            id: clock
+            width: parent.width * 0.15
+            height: parent.height
+            anchors.left: parent.left
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            fontSizeMode: Text.Fit
+            font.pointSize: 45
+            font.weight: Font.DemiBold
+            font.family: "Avenir Next Condensed"
+            color: "white"
+            text: "12:07:05"
+        }
+
+        Timer {
+            interval: 1000
+            running: true
+            repeat: true
+            triggeredOnStart: true
+            onTriggered: {
+                var date = new Date()
+                var hour = date.getHours()
+                var minute = date.getMinutes()
+                var second = date.getSeconds()
+                clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
+                             (minute >= 10 ? minute : "0" + minute) + ":" +
+                             (second >= 10 ? second : "0" + second)
+            }
         }
     }
 }
