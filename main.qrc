@@ -5,9 +5,11 @@
         <file>qml/DisplayWindow.qml</file>
         <file>qml/CandidateItem.qml</file>
         <file>qml/PartyItem.qml</file>
+        <file>qml/SeatItem.qml</file>
         <file>qml/PartyModel.qml</file>
         <file>qml/jbQuick/Charts/qmldir</file>
         <file>qml/jbQuick/Charts/QChart.qml</file>
         <file>qml/jbQuick/Charts/QChart.js</file>
+        <file>SeatItem.qml</file>
     </qresource>
 </RCC>

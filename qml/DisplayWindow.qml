@@ -222,12 +222,14 @@ Window {
 
             Row {
                 id: marqueeItems
-                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height
 
-                Text {
-                    color: "white"
-                    font.pointSize: 56
-                    text: app.marqueeText
+                Repeater {
+                    model: party1.seatCandidates
+
+                    SeatItem {
+
+                    }
                 }
             }
 

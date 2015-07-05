@@ -11,6 +11,7 @@ QtObject {
     property int seats
     property real candidatePercentage
     property real seatPercentage
+    property var seatCandidates
 
     function load(settings) {
         partyName = settings.name
@@ -18,5 +19,6 @@ QtObject {
         flagSource = settings.flag
         candidateSource = settings.candidate.avatar
         candidateName = settings.candidate.name
+        seatCandidates = settings.seats
     }
 }
