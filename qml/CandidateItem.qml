@@ -56,7 +56,7 @@ Item {
             font.letterSpacing: -5
             font.family: "Myriad Pro"
             color: root.partyColor
-            text: root.majorUnit
+            text: app.padRight(root.majorUnit, 3, " ")
             transformOrigin: Item.TopLeft
             transform: [
                 Scale { yScale: root.height / majorLabel.contentHeight * 1.25 }
@@ -88,7 +88,7 @@ Item {
             font.letterSpacing: -5
             font.family: "Myriad Pro"
             color: root.partyColor
-            text: root.minorUnit
+            text: app.padRight(root.minorUnit, 4, "0")
             transformOrigin: Item.TopLeft
             transform: [
                 Scale { yScale: root.height / minorLabel.contentHeight * 1.25 }

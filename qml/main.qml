@@ -18,6 +18,13 @@ QtObject {
         return window
     }
 
+    function padRight(str, len, toPad) {
+        str = String(str)
+        while (str.length < len)
+            str = toPad + str
+        return str
+    }
+
     // Events
     Component.onCompleted: {
         var screens = Native.getScreens()

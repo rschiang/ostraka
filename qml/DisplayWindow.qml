@@ -30,21 +30,14 @@ Window {
                     candidateName: "彭立言"
                     partyColor: "#388E3C"
                     majorUnit: 689
-                    minorUnit: 4886
+                    minorUnit: 5284
                     avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
                 }
             }
         }
 
-        Column {
-            Repeater {
-                model: 3
-                Rectangle {
-                    width: table.width / 3
-                    height: table.height / 3
-                    color: Qt.lighter("#2d7500", 1 + 0.2 * index)
-                }
-            }
+        Rectangle {
+
         }
 
         Rectangle {
