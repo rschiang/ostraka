@@ -1,12 +1,17 @@
 import QtQuick 2.0
 
-Item {
+Rectangle {
     id: root
     property string candidateName
     property int majorUnit
     property int minorUnit
     property color partyColor
+    property real percentage
     property alias avatar: avatar.source
+
+    border.color: partyColor
+    border.width: 6
+    color: "white"
 
     Rectangle {
         id: nameBadge
@@ -14,12 +19,46 @@ Item {
         height: parent.height
         color: root.partyColor
 
+        Rectangle {
+            width: parent.width
+            height: parent.height * 0.15
+            color: "yellow"
+            radius: 2
+
+            Text {
+                id: percentageLabel
+                x: (parent.width - percentageLabel.contentWidth - percentageUnit.contentWidth) / 2
+                height: parent.height
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.VerticalFit
+                font.pixelSize: 45
+                font.weight: Font.Bold
+                font.letterSpacing: -2
+                font.family: "Myriad Pro"
+                color: "black"
+                text: Math.round(root.percentage * 100)
+            }
+
+            Text {
+                id: percentageUnit
+                height: parent.height * 0.2
+                anchors.left: percentageLabel.left
+                anchors.leftMargin: percentageLabel.contentWidth
+                anchors.baseline: percentageLabel.baseline
+                fontSizeMode: Text.VerticalFit
+                font.pixelSize: 34
+                font.family: "Myriad Pro"
+                color: "black"
+                text: "%"
+            }
+        }
+
         Text {
             id: nameLabel
             anchors.fill: parent
+            anchors.topMargin: parent.height * 0.15
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            lineHeight: 1.15
             fontSizeMode: Text.Fit
             font.pixelSize: 45
             font.family: "Apple LiGothic"
@@ -46,6 +85,7 @@ Item {
     Row {
         id: labels
         anchors.left: avatar.right
+        anchors.leftMargin: -root.border.width
         width: parent.width * 0.65
         spacing: parent.width * 0.005
 
@@ -72,7 +112,6 @@ Item {
             fontSizeMode: Text.HorizontalFit
             font.pointSize: 56
             font.weight: Font.DemiBold
-            font.letterSpacing: -10
             font.family: "Hiragino Sans GB"
             color: root.partyColor
             text: "萬"

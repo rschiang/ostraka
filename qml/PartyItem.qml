@@ -40,6 +40,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
             font.pointSize: 56
+            font.weight: Font.Bold
             font.family: "Myriad Pro"
             color: "white"
             text: Math.round(percentage * 100) + "%"

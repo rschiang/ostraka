@@ -33,6 +33,7 @@ Window {
                 partyColor: party1.partyColor
                 majorUnit: party1.majorUnit
                 minorUnit: party1.minorUnit
+                percentage: party1.candidatePercentage
                 avatar: party1.candidateSource
             }
 
@@ -43,6 +44,7 @@ Window {
                 partyColor: party2.partyColor
                 majorUnit: party2.majorUnit
                 minorUnit: party2.minorUnit
+                percentage: party2.candidatePercentage
                 avatar: party2.candidateSource
             }
 
@@ -53,6 +55,7 @@ Window {
                 partyColor: party3.partyColor
                 majorUnit: party3.majorUnit
                 minorUnit: party3.minorUnit
+                percentage: party3.candidatePercentage
                 avatar: party3.candidateSource
             }
         }
@@ -279,7 +282,7 @@ Window {
                 duration: 1000
                 onStopped: {
                     from = to
-                    if (from >= marqueeItems.height)
+                    if (-from >= marqueeItems.height)
                         from = marquee.height
                     to = from - marquee.height
                 }
