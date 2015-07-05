@@ -5,7 +5,6 @@ Item {
     property string candidateName
     property int majorUnit
     property int minorUnit
-    property real percentage
     property color partyColor
     property alias avatar: avatar.source
 
@@ -16,30 +15,8 @@ Item {
         color: root.partyColor
 
         Text {
-            id: percentageLabel
-            height: parent.height * 0.15
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            fontSizeMode: Text.Fit
-            font.pixelSize: 45
-            font.weight: Font.Bold
-            font.family: "Myriad Pro"
-            color: "white"
-            text: Math.round(root.percentage * 100) + "%"
-        }
-
-        Text {
             id: nameLabel
-            anchors {
-                top: percentageLabel.bottom
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
+            anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             lineHeight: 1.15

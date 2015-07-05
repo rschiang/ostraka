@@ -28,7 +28,6 @@ Window {
                 partyColor: "#388E3C"
                 majorUnit: 689
                 minorUnit: 5284
-                percentage: 0.54
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
             CandidateItem {
@@ -38,7 +37,6 @@ Window {
                 partyColor: "#0288D1"
                 majorUnit: 689
                 minorUnit: 5284
-                percentage: 0.54
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
             CandidateItem {
@@ -48,7 +46,6 @@ Window {
                 partyColor: "#E64A19"
                 majorUnit: 689
                 minorUnit: 5284
-                percentage: 0.54
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
         }
