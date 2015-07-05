@@ -29,6 +29,7 @@ Window {
             font.pointSize: 21
             font.weight: Font.DemiBold
             placeholderText: "震驚！舟山河親水樂園捕獲鯰魚"
+            text: "震驚！舟山河親水樂園捕獲鯰魚"
             onTextChanged: app.titleText = text
         }
 

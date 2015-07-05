@@ -12,9 +12,14 @@ Window {
     }
 
     GridLayout {
-        anchors.fill: parent
-        rows: 6
-        columns: 2
+        anchors {
+            top: parent.top
+            bottom: titleBar.top
+            left: parent.left
+            right: parent.right
+        }
+        rows: 3
+        columns: 3
 
         Repeater {
             model: 3
@@ -39,48 +44,39 @@ Window {
         }
 
         Rectangle {
-            Layout.column: 0
-            Layout.row: 3
-            Layout.rowSpan: 2
+            Layout.column: 2
+            Layout.row: 0
+            Layout.rowSpan: 3
             Layout.fillWidth: true
             Layout.fillHeight: true
             color: "azure"
         }
+    }
 
-        Rectangle {
-            id: titleRect
-            Layout.column: 1
-            Layout.row: 3
-            Layout.rowSpan: 2
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            color: "orange"
+    Rectangle {
+        id: titleBar
+        width: parent.width
+        height: parent.height * 0.2
+        anchors.bottom: statusBar.top
+        color: "orange"
 
-            Text {
-                id: titleLabel
-                font.pointSize: 112
-                font.weight: Font.Bold
-                font.letterSpacing: -5
-                color: "black"
-                text: app.titleText
+        Text {
+            id: titleLabel
+            x: parent.width * 0.05
+            y: parent.height * 0.02
+            font.pointSize: 112
+            font.weight: Font.Bold
+            font.letterSpacing: -5
+            color: "black"
+            text: app.titleText
 
-                transformOrigin: Item.TopLeft
-                transform: [
-                    Scale {
-                        xScale: Math.min(titleLabel.parent.width / titleLabel.contentWidth, 1)
-                        yScale: titleLabel.parent.height / titleLabel.contentHeight
-                    }
-                ]
-            }
-        }
-
-        Rectangle {
-            Layout.column: 0
-            Layout.columnSpan: 2
-            Layout.row: 5
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            color: "maroon"
+            transformOrigin: Item.TopLeft
+            transform: [
+                Scale {
+                    xScale: Math.min(titleBar.width * 0.9 / titleLabel.contentWidth, 1)
+                    yScale: titleBar.height * 0.96 / titleLabel.contentHeight
+                }
+            ]
         }
     }
 
