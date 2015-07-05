@@ -24,6 +24,7 @@ Window {
         }
 
         Column {
+            id: candidates
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
@@ -55,45 +56,55 @@ Window {
             }
         }
 
-        Rectangle {
-            id: chart
-            width: table.width / 3
-            height: table.height
+        Column {
+            Row {
+                height: table.height * (2 / 3)
 
-            Chart {
-                id: pieChart
-                anchors.centerIn: parent
-                width: chart.width
-                height: width
-                chartAnimated: true
-                chartAnimationEasing: Easing.OutBack
-                chartAnimationDuration: 2000
-                chartType: Charts.ChartType.PIE
-                chartData: ([
-                                { value: 54, color: "#388E3C" },
-                                { value: 28, color: "#0288D1" },
-                                { value: 18, color: "#E64A19" },
-                            ])
-            }
-        }
+                Chart {
+                    id: pieChart
+                    width: window.width / 3
+                    height: parent.height
+                    chartAnimated: true
+                    chartAnimationEasing: Easing.OutBack
+                    chartAnimationDuration: 2000
+                    chartType: Charts.ChartType.PIE
+                    chartData: ([
+                                    { value: 54, color: "#388E3C" },
+                                    { value: 28, color: "#0288D1" },
+                                    { value: 18, color: "#E64A19" },
+                                ])
+                }
 
-        Rectangle {
-            id: chart2
-            width: table.width / 3
-            height: table.height
-
-            Image {
-                width: parent.width
-                height: parent.height * (2 / 3)
-                source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
-                fillMode: Image.PreserveAspectCrop
-                horizontalAlignment: Image.AlignHCenter
+                Image {
+                    id: screen
+                    width: window.width / 3
+                    height: parent.height
+                    source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
+                    fillMode: Image.PreserveAspectCrop
+                    horizontalAlignment: Image.AlignHCenter
+                }
             }
 
             Row {
-                anchors.bottom: parent.bottom
-                width: parent.width
-                height: parent.height / 3
+                height: table.height / 3
+
+                Rectangle {
+                    width: table.width * (2 / 9)
+                    height: parent.height
+                    color: "#388E3C"
+                }
+
+                Rectangle {
+                    width: table.width * (2 / 9)
+                    height: parent.height
+                    color: "#0288d1"
+                }
+
+                Rectangle {
+                    width: table.width * (2 / 9)
+                    height: parent.height
+                    color: "#e64a19"
+                }
             }
         }
     }
@@ -186,14 +197,12 @@ Window {
             NumberAnimation {
                 target: marqueeItems
                 property: "x"
-                from: marquee.width
-                to: -(marquee.width)
+                from: window.width
+                to: -(window.width)
                 loops: Animation.Infinite
-                duration: 3000
+                duration: 10000
                 running: true
             }
         }
     }
-
-    onWidthChanged: console.log(width)
 }
