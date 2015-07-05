@@ -21,18 +21,35 @@ Window {
         }
 
         Column {
-            Repeater {
-                model: 3
-
-                CandidateItem {
-                    width: table.width / 3
-                    height: table.height / 3
-                    candidateName: "彭立言"
-                    partyColor: "#388E3C"
-                    majorUnit: 689
-                    minorUnit: 5284
-                    avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
-                }
+            CandidateItem {
+                width: table.width / 3
+                height: table.height / 3
+                candidateName: "彭立言"
+                partyColor: "#388E3C"
+                majorUnit: 689
+                minorUnit: 5284
+                percentage: 0.54
+                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+            }
+            CandidateItem {
+                width: table.width / 3
+                height: table.height / 3
+                candidateName: "彭臥言"
+                partyColor: "#0288D1"
+                majorUnit: 689
+                minorUnit: 5284
+                percentage: 0.54
+                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
+            }
+            CandidateItem {
+                width: table.width / 3
+                height: table.height / 3
+                candidateName: "彭仰言"
+                partyColor: "#E64A19"
+                majorUnit: 689
+                minorUnit: 5284
+                percentage: 0.54
+                avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
         }
 
