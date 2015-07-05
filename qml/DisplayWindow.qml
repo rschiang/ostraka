@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Window 2.2
+import QtQuick.Layouts 1.1
 import "jbQuick/Charts"
 import "jbQuick/Charts/QChart.js" as Charts
 
@@ -220,15 +221,20 @@ Window {
             anchors.right: parent.right
             clip: true
 
-            Row {
+            GridLayout {
                 id: marqueeItems
-                height: parent.height
-                spacing: 16
+                width: parent.width
+                columns: 4
+                rowSpacing: 0
+
+                property int itemWidth: marquee.width / marqueeItems.columns
 
                 Repeater {
                     model: party1.seatCandidates
 
                     SeatItem {
+                        Layout.preferredHeight: marquee.height
+                        Layout.preferredWidth: marqueeItems.itemWidth
                         seatName: modelData
                         partyColor: party1.partyColor
                         flagSource: party1.flagSource
@@ -240,6 +246,8 @@ Window {
                     model: party2.seatCandidates
 
                     SeatItem {
+                        Layout.preferredHeight: marquee.height
+                        Layout.preferredWidth: marqueeItems.itemWidth
                         seatName: modelData
                         partyColor: party2.partyColor
                         flagSource: party2.flagSource
@@ -251,6 +259,8 @@ Window {
                     model: party3.seatCandidates
 
                     SeatItem {
+                        Layout.preferredHeight: marquee.height
+                        Layout.preferredWidth: marqueeItems.itemWidth
                         seatName: modelData
                         partyColor: party3.partyColor
                         flagSource: party3.flagSource
@@ -260,13 +270,26 @@ Window {
             }
 
             NumberAnimation {
+                id: scrollMarqueeEffect
                 target: marqueeItems
-                property: "x"
-                from: window.width
-                to: -(marqueeItems.width + window.width)
-                loops: Animation.Infinite
-                duration: marqueeItems.width / window.width * 10000
+                property: "y"
+                from: 0
+                to: -marquee.height
+                easing.type: Easing.OutBack
+                duration: 1000
+                onStopped: {
+                    from = to
+                    if (from >= marqueeItems.height)
+                        from = marquee.height
+                    to = from - marquee.height
+                }
+            }
+
+            Timer {
+                interval: 3000
+                repeat: true
                 running: true
+                onTriggered: scrollMarqueeEffect.start()
             }
         }
     }

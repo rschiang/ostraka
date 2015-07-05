@@ -7,9 +7,6 @@ Item {
     property alias flagSource: flag.source
     property bool elected: false
 
-    width: flag.width + nameLabel.width + nameLabel.anchors.margins
-    height: parent.height
-
     Image {
         id: flag
         width: parent.height
@@ -19,12 +16,15 @@ Item {
 
     Text {
         id: nameLabel
-        height: parent.height * 0.8
-        anchors.left: flag.right
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 8
+        anchors {
+            top: parent.top
+            left: flag.right
+            right: parent.right
+            bottom: parent.bottom
+            margins: 8
+        }
         verticalAlignment: Text.AlignVCenter
-        fontSizeMode: Text.VerticalFit
+        fontSizeMode: Text.Fit
         font.pointSize: 56
         font.family: "Apple LiGothic"
         color: root.elected ? root.partyColor : "white"
