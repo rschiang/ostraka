@@ -64,15 +64,40 @@ Window {
                     id: pieChart
                     width: window.width / 3
                     height: parent.height
-                    chartAnimated: true
-                    chartAnimationEasing: Easing.OutBack
-                    chartAnimationDuration: 2000
+                    chartAnimated: false
                     chartType: Charts.ChartType.PIE
                     chartData: ([
-                                    { value: 54, color: "#388E3C" },
-                                    { value: 28, color: "#0288D1" },
-                                    { value: 18, color: "#E64A19" },
-                                ])
+                        { value: 10, color: party1.partyColor },
+                        { value: 10, color: party2.partyColor },
+                        { value: 10, color: party3.partyColor },
+                    ])
+
+                    function getChartData() {
+                        return [
+                                    { value: party1.seatPercentage, color: party1.partyColor },
+                                    { value: party2.seatPercentage, color: party2.partyColor },
+                                    { value: party3.seatPercentage, color: party3.partyColor },
+                                ]
+                    }
+
+                    function update() {
+                        pieChart.chartData = getChartData()
+                    }
+
+                    Connections {
+                        target: party1
+                        onSeatPercentageChanged: pieChart.update()
+                    }
+
+                    Connections {
+                        target: party2
+                        onSeatPercentageChanged: pieChart.update()
+                    }
+
+                    Connections {
+                        target: party3
+                        onSeatPercentageChanged: pieChart.update()
+                    }
                 }
 
                 Image {

@@ -50,7 +50,6 @@ Window {
                         minimumValue: 0
                         maximumValue: 999
                         stepSize: 1
-                        suffix: " 選票"
                         onValueChanged: {
                             var ballots = value * 53000 + Math.round(Math.random() * 500)
                             majorSpin.value = Math.floor(ballots / 10000)
@@ -98,6 +97,34 @@ Window {
                         suffix: " %"
                         onValueChanged: {
                             app.parties[index].candidatePercentage = value / 100.0
+                        }
+                    }
+
+                    SpinBox {
+                        id: seatSpin
+                        width: parent.width / 6
+                        font.pointSize: 14
+                        decimals: 0
+                        minimumValue: 0
+                        maximumValue: app.totalSeats
+                        stepSize: 1
+                        onValueChanged: {
+                            app.parties[index].seats = value
+                            seatPercentageSpin.value = value * 100 / app.totalSeats
+                        }
+                    }
+
+                    SpinBox {
+                        id: seatPercentageSpin
+                        width: parent.width / 6
+                        font.pointSize: 14
+                        decimals: 0
+                        minimumValue: 0
+                        maximumValue: 100
+                        stepSize: 1
+                        suffix: " %"
+                        onValueChanged: {
+                            app.parties[index].seatPercentage = value / 100.0
                         }
                     }
                 }
