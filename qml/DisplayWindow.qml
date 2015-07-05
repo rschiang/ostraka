@@ -1,10 +1,13 @@
 import QtQuick 2.1
 import QtQuick.Window 2.2
-import QtQuick.Layouts 1.1
+import "jbQuick/Charts"
+import "jbQuick/Charts/QChart.js" as Charts
 
 Window {
     id: window
     title: "Ostraka"
+    width: 800
+    height: 600
     visible: true
 
     Component.onCompleted: {
@@ -30,6 +33,7 @@ Window {
                 minorUnit: 5284
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
+
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
@@ -39,6 +43,7 @@ Window {
                 minorUnit: 902
                 avatar: "file:///Users/RSChiang/Desktop/avatar.jpg"
             }
+
             CandidateItem {
                 width: table.width / 3
                 height: table.height / 3
@@ -54,12 +59,36 @@ Window {
             id: chart
             width: table.width / 3
             height: table.height
+
+            Chart {
+                id: pieChart
+                anchors.centerIn: parent
+                width: chart.width
+                height: width
+                chartAnimated: true
+                chartAnimationEasing: Easing.OutBack
+                chartAnimationDuration: 2000
+                chartType: Charts.ChartType.PIE
+                chartData: ([
+                                { value: 54, color: "#388E3C" },
+                                { value: 28, color: "#0288D1" },
+                                { value: 18, color: "#E64A19" },
+                            ])
+            }
         }
 
         Rectangle {
             id: chart2
             width: table.width / 3
             height: table.height
+
+            Image {
+                width: parent.width
+                height: parent.height * (2 / 3)
+                source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
+                fillMode: Image.PreserveAspectCrop
+                horizontalAlignment: Image.AlignHCenter
+            }
 
             Row {
                 anchors.bottom: parent.bottom
@@ -165,4 +194,6 @@ Window {
             }
         }
     }
+
+    onWidthChanged: console.log(width)
 }

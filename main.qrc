@@ -4,5 +4,8 @@
         <file>qml/EditorWindow.qml</file>
         <file>qml/DisplayWindow.qml</file>
         <file>qml/CandidateItem.qml</file>
+        <file>qml/jbQuick/Charts/qmldir</file>
+        <file>qml/jbQuick/Charts/QChart.qml</file>
+        <file>qml/jbQuick/Charts/QChart.js</file>
     </qresource>
 </RCC>

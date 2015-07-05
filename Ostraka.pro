@@ -15,6 +15,8 @@ RESOURCES += \
 
 OTHER_FILES += qml/*.qml
 
+QML_IMPORT_PATH += qml/
+
 mac {
     QMAKE_INFO_PLIST = platform/mac/Info.plist
     ICON = platform/mac/icon.icns
