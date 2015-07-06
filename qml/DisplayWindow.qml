@@ -77,14 +77,20 @@ Window {
         }
 
         Column {
-            Image {
+            PieChart {
+                id: screen
+                width: parent.width
+                height: table.height * (2 / 3)
+            }
+
+            /*Image {
                 id: screen
                 width: parent.width
                 height: table.height * (2 / 3)
                 source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
                 fillMode: Image.PreserveAspectCrop
                 horizontalAlignment: Image.AlignHCenter
-            }
+            }*/
 
             Row {
                 height: table.height / 3
@@ -165,10 +171,10 @@ Window {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
-            font.pointSize: 45
-            font.weight: Font.DemiBold
-            font.letterSpacing: 2
-            font.family: "Avenir Next Condensed"
+            font.pointSize: 56
+            font.weight: Font.Bold
+            font.letterSpacing: -2
+            font.family: "Myriad Pro"
             color: "white"
             text: "12:07:05"
         }
