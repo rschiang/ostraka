@@ -20,6 +20,7 @@ Rectangle {
         color: root.partyColor
 
         Rectangle {
+            id: percentageBadge
             width: parent.width
             height: parent.height * 0.15
             color: "yellow"
@@ -37,6 +38,19 @@ Rectangle {
                 font.family: "Myriad Pro"
                 color: "black"
                 text: Math.round(root.percentage * 100)
+
+                onTextChanged: {
+                    if (percentageEffect.running)
+                        percentageEffect.stop()
+                    percentageEffect.start()
+                }
+
+                NumberAnimation on opacity {
+                    id: percentageEffect
+                    from: 0; to: 1
+                    duration: 500
+                    easing.type: Easing.OutQuad
+                }
             }
 
             Text {
@@ -55,8 +69,14 @@ Rectangle {
 
         Text {
             id: nameLabel
-            anchors.fill: parent
-            anchors.topMargin: parent.height * 0.15
+            anchors {
+                top: percentageBadge.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+                margins: 6
+            }
+
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
