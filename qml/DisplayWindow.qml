@@ -15,6 +15,23 @@ Window {
         window.flags |= Qt.WindowDoesNotAcceptFocus
     }
 
+    Image {
+        id: logo
+        width: parent.width * 0.1
+        height: width
+        anchors {
+            top: parent.top
+            right: parent.right
+            topMargin: parent.height * 0.05
+            rightMargin: parent.width * 0.05
+        }
+        z: 100
+        horizontalAlignment: Image.AlignRight
+        verticalAlignment: Image.AlignTop
+        fillMode: Image.PreserveAspectFit
+        source: "qrc:/assets/logo.png"
+    }
+
     Row {
         id: table
         anchors {

@@ -10,5 +10,6 @@
         <file>qml/jbQuick/Charts/qmldir</file>
         <file>qml/jbQuick/Charts/QChart.qml</file>
         <file>qml/jbQuick/Charts/QChart.js</file>
+        <file>assets/logo.png</file>
     </qresource>
 </RCC>
