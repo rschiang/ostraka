@@ -4,3 +4,6 @@
 [submodule "qml/jbQuick/Charts"]
 	path = qml/jbQuick/Charts
 	url = https://github.com/jwintz/qchart.js.git
+[submodule "qml/three"]
+	path = qml/three
+	url = https://github.com/tronlec/three.js.git
