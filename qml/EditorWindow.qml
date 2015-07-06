@@ -34,17 +34,65 @@ Window {
         }
 
         Column {
-            width: parent.width
+            Row {
+                spacing: 6
 
+                Text {
+                    width: contentWidth
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pointSize: 14
+                    text: "總選舉人"
+                }
+
+                SpinBox {
+                    id: electorsSpin
+                    font.pointSize: 14
+                    decimals: 0
+                    minimumValue: 0
+                    maximumValue: 2147483647
+                    stepSize: 1
+                    onValueChanged: app.totalElectors = value
+                    Component.onCompleted: value = app.totalElectors
+                }
+            }
+
+            Row {
+                spacing: 6
+
+                Text {
+                    width: contentWidth
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pointSize: 14
+                    text: "不分區總席次"
+                }
+
+                SpinBox {
+                    id: seatsSpin
+                    font.pointSize: 14
+                    decimals: 0
+                    minimumValue: 0
+                    maximumValue: 225
+                    stepSize: 1
+                    onValueChanged: app.totalSeats = value
+                    Component.onCompleted: value = app.totalSeats
+                }
+            }
+        }
+
+        Column {
             Repeater {
                 model: 3
 
                 Row {
-                    width: parent.width
+                    Text {
+                        width: contentWidth + 6
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pointSize: 14
+                        text: app.parties[index].candidateName
+                    }
 
                     SpinBox {
                         id: ballotSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
@@ -54,13 +102,19 @@ Window {
                             var ballots = value * 53000 + Math.round(Math.random() * 500)
                             majorSpin.value = Math.floor(ballots / 10000)
                             minorSpin.value = ballots % 10000
-                            candidatePercentSpin.value = Math.round(ballots * 100 / 6891139)
+                            candidatePercentSpin.value = Math.round(ballots * 100 / app.totalElectors)
                         }
+                    }
+
+                    Text {
+                        width: contentWidth
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pointSize: 14
+                        text: "→"
                     }
 
                     SpinBox {
                         id: majorSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
@@ -74,7 +128,6 @@ Window {
 
                     SpinBox {
                         id: minorSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
@@ -88,7 +141,6 @@ Window {
 
                     SpinBox {
                         id: candidatePercentSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
@@ -99,16 +151,30 @@ Window {
                             app.parties[index].candidatePercentage = value / 100.0
                         }
                     }
+                }
+            }
+        }
+
+        Column {
+            Repeater {
+                model: 3
+
+                Row {
+                    Text {
+                        width: contentWidth + 6
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pointSize: 14
+                        text: app.parties[index].partyName
+                    }
 
                     SpinBox {
                         id: seatSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
                         maximumValue: app.totalSeats
                         stepSize: 1
-                        suffix: "席"
+                        suffix: " 席"
                         onValueChanged: {
                             app.parties[index].seats = value
                             seatPercentageSpin.value = value * 100 / app.totalSeats
@@ -117,7 +183,6 @@ Window {
 
                     SpinBox {
                         id: seatPercentageSpin
-                        width: parent.width / 6
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
@@ -130,15 +195,6 @@ Window {
                     }
                 }
             }
-        }
-
-        TextArea {
-            id: marqueeField
-            width: parent.width
-            Layout.fillHeight: true
-            font.pointSize: 14
-            text: "跑馬燈這裡要放總共最多十五個字"
-            onTextChanged: app.marqueeText = text
         }
     }
 }

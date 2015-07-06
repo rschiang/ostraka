@@ -5,7 +5,7 @@ QtObject {
 
     // Properties
     property string titleText
-    property string marqueeText
+    property int totalElectors: 6891139
     property int totalSeats: 40
 
     // Models
