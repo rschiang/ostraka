@@ -12,6 +12,7 @@ Rectangle {
     border.color: partyColor
     border.width: 6
     color: "white"
+    clip: true
 
     Rectangle {
         id: nameBadge
@@ -123,6 +124,31 @@ Rectangle {
             transform: [
                 Scale { yScale: root.height / majorLabel.contentHeight * 1.25 }
             ]
+
+            onTextChanged: majorEffect.play()
+            ParallelAnimation {
+                id: majorEffect
+                NumberAnimation {
+                    target: majorLabel
+                    property: "y"
+                    from: root.height * 0.2; to: 0
+                    easing.type: Easing.OutElastic
+                    duration: 500
+                }
+                NumberAnimation {
+                    target: majorLabel
+                    property: "opacity"
+                    from: 0; to: 1
+                    easing.type: Easing.OutElastic
+                    duration: 500
+                }
+
+                function play() {
+                    if (majorEffect.running)
+                        majorEffect.stop()
+                    majorEffect.start()
+                }
+            }
         }
 
         Text {
