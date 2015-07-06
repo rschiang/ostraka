@@ -1,8 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Window 2.2
 import QtQuick.Layouts 1.1
-import "jbQuick/Charts"
-import "jbQuick/Charts/QChart.js" as Charts
 
 Window {
     id: window
@@ -10,6 +8,7 @@ Window {
     width: 800
     height: 600
     visible: true
+    color: "black"
 
     Component.onCompleted: {
         window.flags |= Qt.WindowDoesNotAcceptFocus
@@ -78,57 +77,13 @@ Window {
         }
 
         Column {
-            Row {
+            Image {
+                id: screen
+                width: parent.width
                 height: table.height * (2 / 3)
-
-                Chart {
-                    id: pieChart
-                    width: window.width / 3
-                    height: parent.height
-                    chartAnimated: false
-                    chartType: Charts.ChartType.PIE
-                    chartData: ([
-                        { value: 10, color: party1.partyColor },
-                        { value: 10, color: party2.partyColor },
-                        { value: 10, color: party3.partyColor },
-                    ])
-
-                    function getChartData() {
-                        return [
-                                    { value: party1.seatPercentage, color: party1.partyColor },
-                                    { value: party2.seatPercentage, color: party2.partyColor },
-                                    { value: party3.seatPercentage, color: party3.partyColor },
-                                ]
-                    }
-
-                    function update() {
-                        pieChart.chartData = getChartData()
-                    }
-
-                    Connections {
-                        target: party1
-                        onSeatPercentageChanged: pieChart.update()
-                    }
-
-                    Connections {
-                        target: party2
-                        onSeatPercentageChanged: pieChart.update()
-                    }
-
-                    Connections {
-                        target: party3
-                        onSeatPercentageChanged: pieChart.update()
-                    }
-                }
-
-                Image {
-                    id: screen
-                    width: window.width / 3
-                    height: parent.height
-                    source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
-                    fillMode: Image.PreserveAspectCrop
-                    horizontalAlignment: Image.AlignHCenter
-                }
+                source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
+                fillMode: Image.PreserveAspectCrop
+                horizontalAlignment: Image.AlignHCenter
             }
 
             Row {
