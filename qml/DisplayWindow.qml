@@ -306,7 +306,7 @@ Window {
             }
 
             Timer {
-                interval: 3000
+                interval: 7000
                 repeat: true
                 running: true
                 onTriggered: scrollMarqueeEffect.start()

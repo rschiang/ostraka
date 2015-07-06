@@ -36,7 +36,7 @@ Rectangle {
                 font.weight: Font.Bold
                 font.letterSpacing: -2
                 font.family: "Myriad Pro"
-                color: "black"
+                color: Qt.darker(root.partyColor, 1.5)
                 text: Math.round(root.percentage * 100)
 
                 onTextChanged: {
@@ -57,7 +57,7 @@ Rectangle {
                 id: percentageUnit
                 height: parent.height * 0.2
                 anchors.left: percentageLabel.left
-                anchors.leftMargin: percentageLabel.contentWidth
+                anchors.leftMargin: percentageLabel.contentWidth + 1
                 anchors.baseline: percentageLabel.baseline
                 fontSizeMode: Text.VerticalFit
                 font.pixelSize: 34

@@ -44,6 +44,19 @@ Rectangle {
             font.family: "Myriad Pro"
             color: "white"
             text: Math.round(percentage * 100) + "%"
+
+            onTextChanged: {
+                if (percentageEffect.running)
+                    percentageEffect.stop()
+                percentageEffect.start()
+            }
+
+            NumberAnimation on opacity {
+                id: percentageEffect
+                from: 0; to: 1
+                duration: 500
+                easing.type: Easing.OutQuad
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ Item {
     property alias flagSource: flag.source
     property bool elected: false
 
+    state: elected ? "elected" : ""
+
     Image {
         id: flag
         width: parent.height
@@ -27,7 +29,23 @@ Item {
         fontSizeMode: Text.Fit
         font.pointSize: 56
         font.family: "Apple LiGothic"
-        color: root.elected ? root.partyColor : "white"
+        color: "white"
         text: root.seatName
     }
+
+    transitions: [
+        Transition {
+            to: "elected"
+            SequentialAnimation {
+                ColorAnimation { target: nameLabel; property: "color"; to: root.partyColor; duration: 300 }
+                ColorAnimation { target: nameLabel; property: "color"; to: "white"; duration: 100 }
+                ColorAnimation { target: nameLabel; property: "color"; to: root.partyColor; duration: 200 }
+            }
+        },
+        Transition {
+            to: ""
+            ColorAnimation { target: nameLabel; property: "color"; to: "white"; duration: 200 }
+        }
+
+    ]
 }
