@@ -2,6 +2,7 @@ Qt.include("three/build/three.js")
 
 var camera, scene, renderer
 var objects, lights
+var background, backScene, backCamera
 
 function initializeGL(canvas) {
     camera = new THREE.PerspectiveCamera(30, canvas.width / canvas.height, 1, 10000)
@@ -41,8 +42,21 @@ function initializeGL(canvas) {
         })
     }
 
+    // Background rendering
+    backScene = new THREE.Scene()
+
+    var texture = THREE.ImageUtils.loadTexture("qrc:/assets/background.jpg")
+    background = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 0), new THREE.MeshBasicMaterial({ map: texture }))
+    background.material.depthTest = false
+    background.material.depthWrite = false
+    backScene.add(background)
+
+    backCamera = new THREE.Camera()
+    backScene.add(backCamera)
+
     renderer = new THREE.Canvas3DRenderer({ canvas: canvas, devicePixelRatio: canvas.devicePixelRatio })
     renderer.setSize(canvas.width, canvas.height)
+    renderer.autoClear = false
 }
 
 function paintGL(canvas) {
@@ -53,6 +67,8 @@ function paintGL(canvas) {
             break
         }
     }
+    renderer.clear()
+    renderer.render(backScene, backCamera)
     renderer.render(scene, camera)
 }
 
