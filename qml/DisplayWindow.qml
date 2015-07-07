@@ -77,20 +77,19 @@ Window {
         }
 
         Column {
-            PieChart {
-                id: screen
-                width: parent.width
-                height: table.height * (2 / 3)
-            }
+            Row {
+                PieChart {
+                    id: candidateChart
+                    width: table.width / 3
+                    height: table.height * (2 / 3)
+                }
 
-            /*Image {
-                id: screen
-                width: parent.width
-                height: table.height * (2 / 3)
-                source: "file:///Users/RSChiang/Desktop/placeholder.jpg"
-                fillMode: Image.PreserveAspectCrop
-                horizontalAlignment: Image.AlignHCenter
-            }*/
+                PieChart {
+                    id: seatChart
+                    width: table.width / 3
+                    height: table.height * (2 / 3)
+                }
+            }
 
             Row {
                 height: table.height / 3

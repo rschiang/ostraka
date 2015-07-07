@@ -13,7 +13,7 @@ function initializeGL(canvas) {
 
     var shape = new THREE.Shape()
     shape.moveTo(0, 0)
-    shape.ellipse(0, 0, 800, 800, 0, 2 * Math.PI, true)
+    shape.ellipse(0, 0, 500, 500, 0, 2 * Math.PI, true)
     geometry = new THREE.ExtrudeGeometry(shape, { amount: 50, curveSegments: 64 })
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true })
 
