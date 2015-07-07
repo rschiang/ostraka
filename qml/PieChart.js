@@ -18,22 +18,20 @@ function initializeGL(canvas) {
     var startAngle = 0
     for (var i in canvas.items) {
         var item = canvas.items[i]
+        console.log(item.percentage)
+        var angle = item.percentage * 2 * Math.PI
+        var geometry = drawPie(angle)
 
-        var shape = new THREE.Shape()
-        shape.moveTo(0, 0)
-        shape.ellipse(0, 0, 800, 800, startAngle, startAngle + 0.5 * Math.PI, true)
-        startAngle += 0.5 * Math.PI
-
-        var geometry = new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 64 })
-        var material = new THREE.MeshLambertMaterial({ color: String(item.color) })
+        var material = new THREE.MeshLambertMaterial({ color: String(item.color), shading: THREE.SmoothShading })
         var mesh = new THREE.Mesh(geometry, material)
+        mesh.rotation.z = -startAngle
+        startAngle += angle
 
         scene.add(mesh)
         objects.push({
-            shape: shape,
-            geometry: geometry,
-            material: material,
-            mesh: mesh
+            item: item,
+            mesh: mesh,
+            percentage: item.percentage,
         })
     }
 
@@ -42,6 +40,13 @@ function initializeGL(canvas) {
 }
 
 function paintGL(canvas) {
+    for (var i in objects) {
+        var object = objects[i]
+        if (object.item.percentage !== object.percentage) {
+            updatePie()
+            break
+        }
+    }
     renderer.render(scene, camera)
 }
 
@@ -51,4 +56,30 @@ function resizeGL(canvas) {
     camera.aspect = canvas.width / canvas.height
     camera.updateProjectionMatrix()
     renderer.setSize(canvas.width, canvas.height)
+}
+
+function drawPie(angle) {
+    if (angle <= 0)
+        angle = 0.001
+    var shape = new THREE.Shape()
+    shape.moveTo(0, 0)
+    shape.ellipse(0, 0, 800, 800, 0, angle, true)
+    return new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 64 })
+}
+
+function updatePie() {
+    var startAngle = 0
+    for (var i in objects) {
+        var object = objects[i]
+        var percentage = object.item.percentage
+        var angle = percentage * 2 * Math.PI
+        if (percentage !== object.percentage) {
+            var pie = drawPie(angle)
+            object.mesh.geometry.vertices = pie.vertices
+            object.mesh.geometry.verticesNeedUpdate = true
+            object.percentage = percentage
+        }
+        object.mesh.rotation.z = -startAngle
+        startAngle += angle
+    }
 }
