@@ -99,7 +99,7 @@ Window {
                         percentage: party3.candidatePercentage
                     },
                     ChartItem {
-                        color: "#009688"
+                        color: "#424242"
                         percentage: (1 - party1.candidatePercentage
                                        - party2.candidatePercentage
                                        - party3.candidatePercentage)

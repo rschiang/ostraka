@@ -1,7 +1,7 @@
 Qt.include("three/build/three.js")
 
-var camera, scene, light, renderer
-var objects
+var camera, scene, renderer
+var objects, lights
 
 function initializeGL(canvas) {
     camera = new THREE.PerspectiveCamera(30, canvas.width / canvas.height, 1, 10000)
@@ -11,20 +11,26 @@ function initializeGL(canvas) {
 
     scene = new THREE.Scene()
 
-    light = new THREE.HemisphereLight(0xffffff, 0x555555)
-    scene.add(light)
+    var ambientLight = new THREE.AmbientLight(0x404040)
+    scene.add(ambientLight)
+
+    var pointLight = new THREE.PointLight(0xffffff, 1.0, 20000)
+    pointLight.position.z = 500
+    scene.add(pointLight)
+
+    lights = [ambientLight, pointLight]
 
     objects = []
-    var startAngle = 0
+    var startAngle = Math.PI / 2
     for (var i in canvas.items) {
         var item = canvas.items[i]
         console.log(item.percentage)
         var angle = item.percentage * 2 * Math.PI
         var geometry = drawPie(angle)
 
-        var material = new THREE.MeshLambertMaterial({ color: String(item.color), shading: THREE.SmoothShading })
+        var material = new THREE.MeshPhongMaterial({ color: String(item.color), shading: THREE.SmoothShading })
         var mesh = new THREE.Mesh(geometry, material)
-        mesh.rotation.z = -startAngle
+        mesh.rotation.z = startAngle
         startAngle += angle
 
         scene.add(mesh)
@@ -68,7 +74,7 @@ function drawPie(angle) {
 }
 
 function updatePie() {
-    var startAngle = 0
+    var startAngle = Math.PI / 2
     for (var i in objects) {
         var object = objects[i]
         var percentage = object.item.percentage
