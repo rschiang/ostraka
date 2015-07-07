@@ -12,10 +12,11 @@ function initializeGL(canvas) {
 
     scene = new THREE.Scene()
 
-    var ambientLight = new THREE.AmbientLight(0x404040)
+    var ambientLight = new THREE.AmbientLight(0x606060)
     scene.add(ambientLight)
 
-    var pointLight = new THREE.PointLight(0xffffff, 1.0, 20000)
+    var pointLight = new THREE.PointLight(0xffffff, 1.0, 15000)
+    pointLight.position.y = 250
     pointLight.position.z = 500
     scene.add(pointLight)
 
