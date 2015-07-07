@@ -64,7 +64,7 @@ function drawPie(angle) {
     var shape = new THREE.Shape()
     shape.moveTo(0, 0)
     shape.ellipse(0, 0, 800, 800, 0, angle, true)
-    return new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 64 })
+    return new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 36 })
 }
 
 function updatePie() {
@@ -79,7 +79,7 @@ function updatePie() {
             object.mesh.geometry.verticesNeedUpdate = true
             object.percentage = percentage
         }
-        object.mesh.rotation.z = -startAngle
+        object.mesh.rotation.z = startAngle
         startAngle += angle
     }
 }

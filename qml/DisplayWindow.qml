@@ -29,6 +29,7 @@ Window {
         verticalAlignment: Image.AlignTop
         fillMode: Image.PreserveAspectFit
         source: "qrc:/assets/logo.png"
+        smooth: false
     }
 
     Row {
