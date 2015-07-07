@@ -1,6 +1,6 @@
 Qt.include("three/build/three.js")
 
-var camera, scene, renderer
+var camera, scene, light, renderer
 var geometry, material, mesh
 
 function initializeGL(canvas) {
@@ -11,11 +11,14 @@ function initializeGL(canvas) {
 
     scene = new THREE.Scene()
 
+    light = new THREE.HemisphereLight(0xffffff, 0x555555)
+    scene.add(light)
+
     var shape = new THREE.Shape()
     shape.moveTo(0, 0)
-    shape.ellipse(0, 0, 500, 500, 0, 2 * Math.PI, true)
-    geometry = new THREE.ExtrudeGeometry(shape, { amount: 50, curveSegments: 64 })
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true })
+    shape.ellipse(0, 0, 800, 800, 0, 2 * Math.PI, true)
+    geometry = new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 64 })
+    material = new THREE.MeshLambertMaterial({ color: 0x009688 })
 
     mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)

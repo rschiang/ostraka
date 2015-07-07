@@ -77,18 +77,10 @@ Window {
         }
 
         Column {
-            Row {
-                PieChart {
-                    id: candidateChart
-                    width: table.width / 3
-                    height: table.height * (2 / 3)
-                }
-
-                PieChart {
-                    id: seatChart
-                    width: table.width / 3
-                    height: table.height * (2 / 3)
-                }
+            PieChart {
+                id: screen
+                width: parent.width
+                height: table.height * (2 / 3)
             }
 
             Row {
