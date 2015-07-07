@@ -8,8 +8,9 @@
         <file>qml/SeatItem.qml</file>
         <file>qml/PartyModel.qml</file>
         <file>qml/PieChart.qml</file>
+        <file>qml/PieChart.js</file>
+        <file>qml/ChartItem.qml</file>
         <file>assets/logo.png</file>
         <file>qml/three/build/three.js</file>
-        <file>qml/PieChart.js</file>
     </qresource>
 </RCC>
