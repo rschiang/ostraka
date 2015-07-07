@@ -6,7 +6,7 @@ Canvas3D {
     id: root
 
     // Properties
-    property list<ChartItem> items: []
+    property list<ChartItem> items
 
     // Drawing events
 

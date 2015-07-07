@@ -81,6 +81,29 @@ Window {
                 id: screen
                 width: parent.width
                 height: table.height * (2 / 3)
+                items: [
+                    ChartItem {
+                        text: party1.candidateName
+                        color: party1.partyColor
+                        percentage: party1.candidatePercentage
+                    },
+                    ChartItem {
+                        text: party2.candidateName
+                        color: party2.partyColor
+                        percentage: party2.candidatePercentage
+                    },
+                    ChartItem {
+                        text: party3.candidateName
+                        color: party3.partyColor
+                        percentage: party3.candidatePercentage
+                    },
+                    ChartItem {
+                        color: "#009688"
+                        percentage: (1 - party1.candidatePercentage
+                                       - party2.candidatePercentage
+                                       - party3.candidatePercentage)
+                    }
+                ]
             }
 
             Row {
