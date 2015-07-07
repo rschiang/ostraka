@@ -102,7 +102,7 @@ Window {
                             var ballots = value * 53000 + Math.round(Math.random() * 500)
                             majorSpin.value = Math.floor(ballots / 10000)
                             minorSpin.value = ballots % 10000
-                            candidatePercentSpin.value = Math.round(ballots * 100 / app.totalElectors)
+                            candidatePercentSpin.value = Math.round(ballots * 1000 / app.totalElectors) / 10
                         }
                     }
 
@@ -142,7 +142,7 @@ Window {
                     SpinBox {
                         id: candidatePercentSpin
                         font.pointSize: 14
-                        decimals: 0
+                        decimals: 1
                         minimumValue: 0
                         maximumValue: 100
                         stepSize: 1
