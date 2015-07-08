@@ -180,49 +180,53 @@ Window {
         }
     }
 
-    Rectangle {
+    Item {
         id: statusBar
         width: parent.width
         height: parent.height * 0.1
         anchors.bottom: parent.bottom
-        color: "black"
 
-        Text {
-            id: clock
+        Item {
+            id: clockArea
             width: parent.width * 0.15
             height: parent.height
-            anchors.left: parent.left
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            fontSizeMode: Text.Fit
-            font.pointSize: 56
-            font.weight: Font.Bold
-            font.letterSpacing: -2
-            font.family: "Myriad Pro"
-            color: "white"
-            text: "12:07:05"
-        }
 
-        Timer {
-            interval: 1000
-            running: true
-            repeat: true
-            triggeredOnStart: true
-            onTriggered: {
-                var date = new Date()
-                var hour = date.getHours()
-                var minute = date.getMinutes()
-                var second = date.getSeconds()
-                clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
-                             (minute >= 10 ? minute : "0" + minute) + ":" +
-                             (second >= 10 ? second : "0" + second)
+            Text {
+                id: clock
+                anchors.fill: parent
+                anchors.margins: 6
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+                font.pointSize: 56
+                font.weight: Font.Bold
+                font.letterSpacing: -2
+                font.family: "Myriad Pro"
+                color: "white"
+                text: "12:07:05"
+            }
+
+            Timer {
+                interval: 1000
+                running: true
+                repeat: true
+                triggeredOnStart: true
+                onTriggered: {
+                    var date = new Date()
+                    var hour = date.getHours()
+                    var minute = date.getMinutes()
+                    var second = date.getSeconds()
+                    clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
+                                 (minute >= 10 ? minute : "0" + minute) + ":" +
+                                 (second >= 10 ? second : "0" + second)
+                }
             }
         }
 
         Item {
             id: marquee
             height: parent.height
-            anchors.left: clock.right
+            anchors.left: clockArea.right
             anchors.right: parent.right
             clip: true
 
