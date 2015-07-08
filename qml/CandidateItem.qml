@@ -188,7 +188,7 @@ Rectangle {
     Image {
         id: electedIcon
         anchors.bottom: parent.bottom
-        anchors.right: parent.right
+        anchors.horizontalCenter: avatar.right
         width: 64
         height: 64
         source: "qrc:/assets/elected.png"

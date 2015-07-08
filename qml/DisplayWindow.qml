@@ -32,118 +32,124 @@ Window {
         smooth: false
     }
 
-    Row {
-        id: table
+    Column {
+        id: candidates
+        width: window.width * 0.35
         anchors {
             top: parent.top
             bottom: titleBar.top
             left: parent.left
+        }
+
+        CandidateItem {
+            width: parent.width
+            height: parent.height / 3
+            candidateName: party1.candidateName
+            partyColor: party1.partyColor
+            majorUnit: party1.majorUnit
+            minorUnit: party1.minorUnit
+            percentage: party1.candidatePercentage
+            avatar: party1.candidateSource
+            elected: party1.candidateElected
+        }
+
+        CandidateItem {
+            width: parent.width
+            height: parent.height / 3
+            candidateName: party2.candidateName
+            partyColor: party2.partyColor
+            majorUnit: party2.majorUnit
+            minorUnit: party2.minorUnit
+            percentage: party2.candidatePercentage
+            avatar: party2.candidateSource
+            elected: party2.candidateElected
+        }
+
+        CandidateItem {
+            width: parent.width
+            height: parent.height / 3
+            candidateName: party3.candidateName
+            partyColor: party3.partyColor
+            majorUnit: party3.majorUnit
+            minorUnit: party3.minorUnit
+            percentage: party3.candidatePercentage
+            avatar: party3.candidateSource
+            elected: party3.candidateElected
+        }
+    }
+
+    Row {
+        id: parties
+        height: window.height * 0.25
+        anchors {
+            bottom: titleBar.top
+            left: candidates.right
             right: parent.right
         }
 
-        Column {
-            id: candidates
-            CandidateItem {
-                width: table.width / 3
-                height: table.height / 3
-                candidateName: party1.candidateName
-                partyColor: party1.partyColor
-                majorUnit: party1.majorUnit
-                minorUnit: party1.minorUnit
+        PartyItem {
+            width: parent.width / 3
+            height: parent.height
+            partyName: party1.partyName
+            partyColor: party1.partyColor
+            seats: party1.seats
+            percentage: party1.seatPercentage
+            flagSource: party1.flagSource
+        }
+
+        PartyItem {
+            width: parent.width / 3
+            height: parent.height
+            partyName: party2.partyName
+            partyColor: party2.partyColor
+            seats: party2.seats
+            percentage: party2.seatPercentage
+            flagSource: party2.flagSource
+        }
+
+        PartyItem {
+            width: parent.width / 3
+            height: parent.height
+            partyName: party3.partyName
+            partyColor: party3.partyColor
+            seats: party3.seats
+            percentage: party3.seatPercentage
+            flagSource: party3.flagSource
+        }
+    }
+
+    PieChart {
+        id: screen
+        anchors {
+            top: parent.top
+            bottom: parties.top
+            left: candidates.right
+            right: parent.right
+        }
+
+        items: [
+            ChartItem {
+                text: party1.candidateName
+                color: party1.partyColor
                 percentage: party1.candidatePercentage
-                avatar: party1.candidateSource
-                elected: party1.candidateElected
-            }
-
-            CandidateItem {
-                width: table.width / 3
-                height: table.height / 3
-                candidateName: party2.candidateName
-                partyColor: party2.partyColor
-                majorUnit: party2.majorUnit
-                minorUnit: party2.minorUnit
+            },
+            ChartItem {
+                text: party2.candidateName
+                color: party2.partyColor
                 percentage: party2.candidatePercentage
-                avatar: party2.candidateSource
-                elected: party2.candidateElected
-            }
-
-            CandidateItem {
-                width: table.width / 3
-                height: table.height / 3
-                candidateName: party3.candidateName
-                partyColor: party3.partyColor
-                majorUnit: party3.majorUnit
-                minorUnit: party3.minorUnit
+            },
+            ChartItem {
+                text: party3.candidateName
+                color: party3.partyColor
                 percentage: party3.candidatePercentage
-                avatar: party3.candidateSource
-                elected: party3.candidateElected
+            },
+            ChartItem {
+                color: "#424242"
+                percentage: (1 - party1.candidatePercentage
+                               - party2.candidatePercentage
+                               - party3.candidatePercentage)
             }
-        }
-
-        Column {
-            PieChart {
-                id: screen
-                width: parent.width
-                height: table.height * (2 / 3)
-                items: [
-                    ChartItem {
-                        text: party1.candidateName
-                        color: party1.partyColor
-                        percentage: party1.candidatePercentage
-                    },
-                    ChartItem {
-                        text: party2.candidateName
-                        color: party2.partyColor
-                        percentage: party2.candidatePercentage
-                    },
-                    ChartItem {
-                        text: party3.candidateName
-                        color: party3.partyColor
-                        percentage: party3.candidatePercentage
-                    },
-                    ChartItem {
-                        color: "#424242"
-                        percentage: (1 - party1.candidatePercentage
-                                       - party2.candidatePercentage
-                                       - party3.candidatePercentage)
-                    }
-                ]
-            }
-
-            Row {
-                height: table.height / 3
-
-                PartyItem {
-                    width: table.width * (2 / 9)
-                    height: parent.height
-                    partyName: party1.partyName
-                    partyColor: party1.partyColor
-                    seats: party1.seats
-                    percentage: party1.seatPercentage
-                    flagSource: party1.flagSource
-                }
-
-                PartyItem {
-                    width: table.width * (2 / 9)
-                    height: parent.height
-                    partyName: party2.partyName
-                    partyColor: party2.partyColor
-                    seats: party2.seats
-                    percentage: party2.seatPercentage
-                    flagSource: party2.flagSource
-                }
-
-                PartyItem {
-                    width: table.width * (2 / 9)
-                    height: parent.height
-                    partyName: party3.partyName
-                    partyColor: party3.partyColor
-                    seats: party3.seats
-                    percentage: party3.seatPercentage
-                    flagSource: party3.flagSource
-                }
-            }
-        }
+        ]
     }
 
     Rectangle {
