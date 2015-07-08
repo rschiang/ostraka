@@ -99,7 +99,9 @@ function updatePie() {
         if (percentage !== object.percentage) {
             var pie = drawPie(angle)
             object.mesh.geometry.vertices = pie.vertices
+            object.mesh.geometry.faces = pie.faces
             object.mesh.geometry.verticesNeedUpdate = true
+            object.mesh.geometry.elementsNeedUpdate = true
             object.percentage = percentage
         }
         object.mesh.rotation.z = startAngle
