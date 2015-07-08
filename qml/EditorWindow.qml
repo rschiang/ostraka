@@ -84,11 +84,13 @@ Window {
                 model: 3
 
                 Row {
-                    Text {
-                        width: contentWidth + 6
+                    CheckBox {
+                        id: electedCheckBox
                         anchors.verticalCenter: parent.verticalCenter
-                        font.pointSize: 14
-                        text: app.parties[index].candidateName
+                        text: app.parties[index].candidateName + " "
+                        onCheckedChanged: {
+                            app.parties[index].candidateElected = checked
+                        }
                     }
 
                     SpinBox {
@@ -152,17 +154,9 @@ Window {
                         }
                     }
 
-                    CheckBox {
-                        id: electedCheckBox
-                        anchors.verticalCenter: parent.verticalCenter
-                        onCheckedChanged: {
-                            app.parties[index].candidateElected = checked
-                        }
-                    }
-
                     Image {
                         id: electedIcon
-                        anchors.verticalCenter: electedCheckBox.verticalCenter
+                        anchors.verticalCenter: parent.verticalCenter
                         width: 16
                         height: 16
                         source: "qrc:/assets/elected.png"

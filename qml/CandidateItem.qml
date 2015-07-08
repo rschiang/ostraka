@@ -182,20 +182,6 @@ Rectangle {
             transform: [
                 Scale { yScale: root.height / minorLabel.contentHeight * 1.25 }
             ]
-
-            onTextChanged: minorEffect.play()
-
-            NumberAnimation on opacity {
-                id: minorEffect
-                from: 0.7; to: 1
-                duration: 500
-                easing.type: Easing.OutQuad
-
-                function play() {
-                    if (running) stop()
-                    start()
-                }
-            }
         }
     }
 
