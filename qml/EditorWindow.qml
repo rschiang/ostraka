@@ -207,5 +207,35 @@ Window {
                 }
             }
         }
+
+        Row {
+            spacing: 6
+
+            Text {
+                width: contentWidth
+                anchors.verticalCenter: parent.verticalCenter
+                font.pointSize: 14
+                text: "備用標題"
+            }
+
+            TextField {
+                id: altTitleField
+                //width: window.width / 2
+                font.pixelSize: 14
+                text: "中央氣象局呼籲選民積極出門投票"
+            }
+
+            Button {
+                id: swapTitleButton
+                text: "置換"
+                onClicked: {
+                    if (altTitleField.length) {
+                        var str = titleField.text
+                        titleField.text = altTitleField.text
+                        altTitleField.text = str
+                    }
+                }
+            }
+        }
     }
 }
