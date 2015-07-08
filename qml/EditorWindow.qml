@@ -166,44 +166,71 @@ Window {
             }
         }
 
-        Column {
-            Repeater {
-                model: 3
+        Row {
+            spacing: 16
 
-                Row {
-                    Text {
-                        width: contentWidth + 6
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.pointSize: 14
-                        text: app.parties[index].partyName
-                    }
+            Column {
+                id: seats
 
-                    SpinBox {
-                        id: seatSpin
-                        font.pointSize: 14
-                        decimals: 0
-                        minimumValue: 0
-                        maximumValue: app.totalSeats
-                        stepSize: 1
-                        suffix: " 席"
-                        onValueChanged: {
-                            app.parties[index].seats = value
-                            seatPercentageSpin.value = value * 100 / app.totalSeats
+                Repeater {
+                    model: 3
+
+                    Row {
+                        Text {
+                            width: contentWidth + 6
+                            anchors.verticalCenter: parent.verticalCenter
+                            font.pointSize: 14
+                            text: app.parties[index].partyName
+                        }
+
+                        SpinBox {
+                            id: seatSpin
+                            font.pointSize: 14
+                            decimals: 0
+                            minimumValue: 0
+                            maximumValue: app.totalSeats
+                            stepSize: 1
+                            suffix: " 席"
+                            onValueChanged: {
+                                app.parties[index].seats = value
+                                seatPercentageSpin.value = value * 100 / app.totalSeats
+                            }
+                        }
+
+                        SpinBox {
+                            id: seatPercentageSpin
+                            font.pointSize: 14
+                            decimals: 0
+                            minimumValue: 0
+                            maximumValue: 100
+                            stepSize: 1
+                            suffix: " %"
+                            onValueChanged: {
+                                app.parties[index].seatPercentage = value / 100.0
+                            }
                         }
                     }
+                }
+            }
 
-                    SpinBox {
-                        id: seatPercentageSpin
-                        font.pointSize: 14
-                        decimals: 0
-                        minimumValue: 0
-                        maximumValue: 100
-                        stepSize: 1
-                        suffix: " %"
-                        onValueChanged: {
-                            app.parties[index].seatPercentage = value / 100.0
-                        }
-                    }
+            Column {
+                spacing: 8
+                anchors.verticalCenter: seats.verticalCenter
+
+                Text {
+                    font.pixelSize: 14
+                    text: "總統候選人票合計 " +
+                          Math.round((party1.candidatePercentage +
+                                      party2.candidatePercentage +
+                                      party3.candidatePercentage) * 1000) / 10 + "%"
+                }
+
+                Text {
+                    font.pointSize: 14
+                    text: "政黨票合計 " +
+                          Math.round((party1.seatPercentage +
+                                      party2.seatPercentage +
+                                      party3.seatPercentage) * 1000) / 10 + "%"
                 }
             }
         }
@@ -211,7 +238,7 @@ Window {
         Item {
             width: parent.width
             height: altTitleField.height
-            
+
             Text {
                 id: altTitleLabel
                 width: contentWidth
