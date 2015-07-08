@@ -208,25 +208,31 @@ Window {
             }
         }
 
-        Row {
-            spacing: 6
-
+        Item {
+            width: parent.width
+            height: altTitleField.height
+            
             Text {
+                id: altTitleLabel
                 width: contentWidth
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.baseline: altTitleField.baseline
                 font.pointSize: 14
                 text: "備用標題"
             }
 
             TextField {
                 id: altTitleField
-                //width: window.width / 2
+                anchors.left: altTitleLabel.right
+                anchors.right: swapTitleButton.left
+                anchors.margins: 6
                 font.pixelSize: 14
                 text: "中央氣象局呼籲選民積極出門投票"
             }
 
             Button {
                 id: swapTitleButton
+                anchors.baseline: altTitleField.baseline
+                anchors.right: parent.right
                 text: "置換"
                 onClicked: {
                     if (altTitleField.length) {
