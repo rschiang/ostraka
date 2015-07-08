@@ -15,14 +15,14 @@ Rectangle {
         Image {
             id: flag
             width: root.width
-            height: root.height * 0.5
+            height: root.height * 0.6
             fillMode: Image.PreserveAspectCrop
         }
 
         Text {
             id: nameLabel
             width: root.width
-            height: root.height * 0.2
+            height: root.height * 0.15
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
@@ -35,7 +35,7 @@ Rectangle {
         Text {
             id: percentageLabel
             width: root.width
-            height: root.height * 0.3
+            height: root.height * 0.25
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
