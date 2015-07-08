@@ -12,6 +12,7 @@ QtObject {
     property real candidatePercentage
     property real seatPercentage
     property variant seatCandidates
+    property bool candidateElected
 
     function load(settings) {
         partyName = settings.name

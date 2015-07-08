@@ -151,6 +151,23 @@ Window {
                             app.parties[index].candidatePercentage = value / 100.0
                         }
                     }
+
+                    CheckBox {
+                        id: electedCheckBox
+                        anchors.verticalCenter: parent.verticalCenter
+                        onCheckedChanged: {
+                            app.parties[index].candidateElected = checked
+                        }
+                    }
+
+                    Image {
+                        id: electedIcon
+                        anchors.verticalCenter: electedCheckBox.verticalCenter
+                        width: 16
+                        height: 16
+                        source: "qrc:/assets/elected.png"
+                        visible: electedCheckBox.checked
+                    }
                 }
             }
         }

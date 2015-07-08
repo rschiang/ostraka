@@ -8,6 +8,7 @@ Rectangle {
     property color partyColor
     property real percentage
     property alias avatar: avatar.source
+    property bool elected: false
 
     border.color: partyColor
     border.width: 6
@@ -182,5 +183,15 @@ Rectangle {
                 Scale { yScale: root.height / minorLabel.contentHeight * 1.25 }
             ]
         }
+    }
+
+    Image {
+        id: electedIcon
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: 64
+        height: 64
+        source: "qrc:/assets/elected.png"
+        visible: root.elected
     }
 }

@@ -52,6 +52,7 @@ Window {
                 minorUnit: party1.minorUnit
                 percentage: party1.candidatePercentage
                 avatar: party1.candidateSource
+                elected: party1.candidateElected
             }
 
             CandidateItem {
@@ -63,6 +64,7 @@ Window {
                 minorUnit: party2.minorUnit
                 percentage: party2.candidatePercentage
                 avatar: party2.candidateSource
+                elected: party2.candidateElected
             }
 
             CandidateItem {
@@ -74,6 +76,7 @@ Window {
                 minorUnit: party3.minorUnit
                 percentage: party3.candidatePercentage
                 avatar: party3.candidateSource
+                elected: party3.candidateElected
             }
         }
 

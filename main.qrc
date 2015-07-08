@@ -12,6 +12,7 @@
         <file>qml/ChartItem.qml</file>
         <file>assets/logo.png</file>
         <file>assets/background.jpg</file>
+        <file>assets/elected.png</file>
         <file>qml/three/build/three.js</file>
     </qresource>
 </RCC>
