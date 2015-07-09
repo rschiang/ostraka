@@ -5,8 +5,8 @@ QtObject {
 
     // Properties
     property string titleText
-    property int totalElectors: 6891139
-    property int totalSeats: 40
+    property int totalElectors: 13452016
+    property int totalSeats: 18
 
     // Models
     property list<PartyModel> parties: [
@@ -35,7 +35,7 @@ QtObject {
 
     // Events
     Component.onCompleted: {
-        var settings = JSON.parse(Native.readFile('/Users/Shared/ostraka.json'))
+        var settings = JSON.parse(Native.readFile('ostraka.json'))
         party1.load(settings.party1)
         party2.load(settings.party2)
         party3.load(settings.party3)
