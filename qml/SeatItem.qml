@@ -28,7 +28,7 @@ Item {
         verticalAlignment: Text.AlignVCenter
         fontSizeMode: Text.Fit
         font.pointSize: 56
-        font.family: "Apple LiGothic"
+        font.family: "LiHei Pro"
         color: "white"
         text: root.seatName
     }

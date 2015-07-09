@@ -27,7 +27,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
             font.pointSize: 45
-            font.family: "Apple LiGothic"
+            font.family: "LiHei Pro"
             color: "white"
             text: partyName + " " + seats + "席"
         }

@@ -35,7 +35,7 @@ QtObject {
 
     // Events
     Component.onCompleted: {
-        var settings = JSON.parse(Native.readFile('ostraka.json'))
+        var settings = JSON.parse(Native.readFile('/Users/Shared/ostraka.json'))
         party1.load(settings.party1)
         party2.load(settings.party2)
         party3.load(settings.party3)

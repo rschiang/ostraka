@@ -83,7 +83,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             fontSizeMode: Text.Fit
             font.pixelSize: 45
-            font.family: "Apple LiGothic"
+            font.family: "LiHei Pro"
             color: "white"
             text: updateText(root.candidateName)
 

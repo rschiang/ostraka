@@ -166,7 +166,7 @@ Window {
             font.pointSize: 112
             font.weight: Font.Bold
             font.letterSpacing: -5
-            font.family: "Hiragino Kaku Gothic ProN W6"
+            font.family: "Hiragino Kaku Gothic ProN"
             color: "black"
             text: app.titleText
 
@@ -288,7 +288,7 @@ Window {
                 fontSizeMode: Text.Fit
                 font.pointSize: 56
                 font.letterSpacing: 2
-                font.family: "Apple LiGothic"
+                font.family: "LiHei Pro"
                 color: "white"
                 text: "中華民國不分區立委"
             }
