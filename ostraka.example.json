@@ -1,0 +1,32 @@
+{
+	"party1": {
+		"name": "綠綠黨",
+		"color": "#4caf50",
+		"flag": "file:///Users/Shared/party1.jpg",
+		"candidate": {
+			"avatar": "file:///Users/Shared/avatar1.jpg",
+			"name": "彭立言"
+		},
+		"seats": ["徐大勤", "蕭大政", "包大和", "葛大光", "趙大茂"]
+	},
+	"party2": {
+		"name": "黃黃黨",
+		"color": "#3f51b5",
+		"flag": "file:///Users/Shared/party2.jpg",
+		"candidate": {
+			"avatar": "file:///Users/Shared/avatar2.jpg",
+			"name": "彭臥言"
+		},
+		"seats": ["明大正", "陳大賢", "張大朗", "黃大堂", "石大瑜"]
+	},
+	"party3": {
+		"name": "橘橘黨",
+		"color": "#fb8c00",
+		"flag": "file:///Users/Shared/party3.jpg",
+		"candidate": {
+			"avatar": "file:///Users/Shared/avatar3.jpg",
+			"name": "彭仰言"
+		},
+		"seats": ["蘇大足", "朱大漢", "吳大山", "張大中", "王大立"]
+	}
+}
