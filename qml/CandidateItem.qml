@@ -37,7 +37,7 @@ Rectangle {
                 font.pixelSize: 45
                 font.weight: Font.Bold
                 font.letterSpacing: -2
-                font.family: "Myriad Pro"
+                font.family: "Overpass"
                 color: Qt.darker(root.partyColor, 1.5)
                 text: Math.round(root.percentage * 100)
 
@@ -63,7 +63,7 @@ Rectangle {
                 anchors.baseline: percentageLabel.baseline
                 fontSizeMode: Text.VerticalFit
                 font.pixelSize: 34
-                font.family: "Myriad Pro"
+                font.family: "Overpass"
                 color: "black"
                 text: "%"
             }
@@ -118,7 +118,7 @@ Rectangle {
             font.pointSize: 112
             font.weight: Font.DemiBold
             font.letterSpacing: -5
-            font.family: "Myriad Pro"
+            font.family: "Overpass"
             color: root.partyColor
             text: app.padRight(root.majorUnit, 3, " ")
             transformOrigin: Item.TopLeft
@@ -159,7 +159,7 @@ Rectangle {
             fontSizeMode: Text.HorizontalFit
             font.pointSize: 56
             font.weight: Font.DemiBold
-            font.family: "Hiragino Sans GB"
+            font.family: "Pingfang TC"
             color: root.partyColor
             text: "萬"
             transformOrigin: Item.TopLeft
@@ -175,7 +175,7 @@ Rectangle {
             font.pointSize: 112
             font.weight: Font.DemiBold
             font.letterSpacing: -5
-            font.family: "Myriad Pro"
+            font.family: "Overpass"
             color: root.partyColor
             text: app.padRight(root.minorUnit, 4, "0")
             transformOrigin: Item.TopLeft

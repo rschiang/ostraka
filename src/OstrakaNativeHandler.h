@@ -19,7 +19,7 @@ public:
     Q_INVOKABLE QScreen* getPrimaryScreen();
     Q_INVOKABLE void setScreen(QWindow* window, QScreen* screen);
     Q_INVOKABLE QString readFile(QString path);
-    Q_INVOKABLE QString applicationPath();
+    Q_INVOKABLE QString getFilePath(QString path);
 
 private:
     QGuiApplication* app;

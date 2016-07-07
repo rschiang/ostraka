@@ -41,7 +41,7 @@ Rectangle {
             fontSizeMode: Text.Fit
             font.pointSize: 56
             font.weight: Font.Bold
-            font.family: "Myriad Pro"
+            font.family: "Overpass"
             color: "white"
             text: Math.round(percentage * 100) + "%"
 

@@ -13,7 +13,7 @@ HEADERS += \
 RESOURCES += \
     main.qrc
 
-OTHER_FILES += qml/*.qml
+OTHER_FILES += qml/*.qml qml/*.js
 
 QML_IMPORT_PATH += qml/
 

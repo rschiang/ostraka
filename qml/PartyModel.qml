@@ -11,15 +11,18 @@ QtObject {
     property int seats
     property real candidatePercentage
     property real seatPercentage
-    property variant seatCandidates
+    property variant localCandidates
+    property variant nationalCandidates
     property bool candidateElected
 
     function load(settings) {
+        console.log(JSON.stringify(settings))
         partyName = settings.name
         partyColor = settings.color
-        flagSource = settings.flag
-        candidateSource = settings.candidate.avatar
-        candidateName = settings.candidate.name
-        seatCandidates = settings.seats
+        flagSource = Native.getFilePath(settings.flag)
+        candidateSource = Native.getFilePath(settings.avatar)
+        candidateName = settings.candidate
+        localCandidates = settings.local_seats
+        nationalCandidates = settings.national_seats
     }
 }

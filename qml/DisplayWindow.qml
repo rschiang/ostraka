@@ -201,7 +201,7 @@ Window {
                 font.pointSize: 56
                 font.weight: Font.Bold
                 font.letterSpacing: -2
-                font.family: "Myriad Pro"
+                font.family: "Overpass"
                 color: "white"
                 text: "12:07:05"
             }
@@ -239,7 +239,7 @@ Window {
                 property int itemWidth: marquee.width / marqueeItems.columns
 
                 Repeater {
-                    model: party1.seatCandidates
+                    model: party1.nationalCandidates
 
                     SeatItem {
                         Layout.preferredHeight: marquee.height
@@ -252,7 +252,7 @@ Window {
                 }
 
                 Repeater {
-                    model: party2.seatCandidates
+                    model: party2.nationalCandidates
 
                     SeatItem {
                         Layout.preferredHeight: marquee.height
@@ -265,7 +265,7 @@ Window {
                 }
 
                 Repeater {
-                    model: party3.seatCandidates
+                    model: party3.nationalCandidates
 
                     SeatItem {
                         Layout.preferredHeight: marquee.height

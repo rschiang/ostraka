@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "Config.js" as Config
 
 QtObject {
     id: app
@@ -35,10 +36,12 @@ QtObject {
 
     // Events
     Component.onCompleted: {
-        var settings = JSON.parse(Native.readFile('/Users/Shared/ostraka.json'))
-        party1.load(settings.party1)
-        party2.load(settings.party2)
-        party3.load(settings.party3)
+        var path = Native.getFilePath('ostraka.txt')
+        var file = Native.readFile(path)
+        var settings = Config.parse(file)
+        party1.load(settings[0])
+        party2.load(settings[1])
+        party3.load(settings[2])
 
         var screens = Native.getScreens()
         var primaryScreen = Native.getPrimaryScreen()

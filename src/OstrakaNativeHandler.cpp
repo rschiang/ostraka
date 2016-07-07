@@ -37,11 +37,12 @@ QString OstrakaNativeHandler::readFile(QString path) {
     return result;
 }
 
-QString OstrakaNativeHandler::applicationPath() {
+QString OstrakaNativeHandler::getFilePath(QString path) {
     QDir dir = QDir(QGuiApplication::applicationDirPath());
 #ifdef Q_OS_MAC
     dir.cdUp();
     dir.cdUp();
+    dir.cdUp();
 #endif
-    return dir.absolutePath();
+    return dir.absoluteFilePath(path);
 }

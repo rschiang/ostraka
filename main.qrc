@@ -10,6 +10,7 @@
         <file>qml/PieChart.qml</file>
         <file>qml/PieChart.js</file>
         <file>qml/ChartItem.qml</file>
+        <file>qml/Config.js</file>
         <file>assets/logo.png</file>
         <file>assets/background.jpg</file>
         <file>assets/elected.png</file>
