@@ -8,6 +8,7 @@
 #include <QGuiApplication>
 #include <QFile>
 #include <QTextStream>
+#include <QDir>
 
 class OstrakaNativeHandler : public QObject
 {
@@ -18,6 +19,7 @@ public:
     Q_INVOKABLE QScreen* getPrimaryScreen();
     Q_INVOKABLE void setScreen(QWindow* window, QScreen* screen);
     Q_INVOKABLE QString readFile(QString path);
+    Q_INVOKABLE QString applicationPath();
 
 private:
     QGuiApplication* app;
