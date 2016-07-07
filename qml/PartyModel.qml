@@ -19,8 +19,8 @@ QtObject {
         console.log(JSON.stringify(settings))
         partyName = settings.name
         partyColor = settings.color
-        flagSource = Native.getFilePath(settings.flag)
-        candidateSource = Native.getFilePath(settings.avatar)
+        flagSource = "file://" + Native.getFilePath(settings.flag)
+        candidateSource = "file://" + Native.getFilePath(settings.avatar)
         candidateName = settings.candidate
         localCandidates = settings.local_seats
         nationalCandidates = settings.national_seats

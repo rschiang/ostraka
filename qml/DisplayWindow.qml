@@ -34,10 +34,10 @@ Window {
 
     Column {
         id: candidates
-        width: window.width * 0.4
+        width: window.width / 4
         anchors {
             top: parent.top
-            bottom: titleBar.top
+            bottom: statusBar.top
             left: parent.left
         }
 
@@ -154,8 +154,9 @@ Window {
 
     Rectangle {
         id: titleBar
-        width: parent.width
         height: parent.height * 0.16
+        anchors.left: candidates.right
+        anchors.right: parent.right
         anchors.bottom: statusBar.top
         color: "orange"
 

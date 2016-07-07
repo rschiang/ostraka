@@ -10,185 +10,157 @@ Rectangle {
     property alias avatar: avatar.source
     property bool elected: false
 
-    border.color: partyColor
-    border.width: 6
-    color: "white"
+    color: partyColor
     clip: true
 
-    Rectangle {
-        id: nameBadge
-        width: parent.width * 0.1
-        height: parent.height
-        color: root.partyColor
-
-        Rectangle {
-            id: percentageBadge
-            width: parent.width
-            height: parent.height * 0.15
-            color: "yellow"
-            radius: 2
-
-            Text {
-                id: percentageLabel
-                x: (parent.width - percentageLabel.contentWidth - percentageUnit.contentWidth) / 2
-                height: parent.height
-                verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.VerticalFit
-                font.pixelSize: 45
-                font.weight: Font.Bold
-                font.letterSpacing: -2
-                font.family: "Overpass"
-                color: Qt.darker(root.partyColor, 1.5)
-                text: Math.round(root.percentage * 100)
-
-                onTextChanged: {
-                    if (percentageEffect.running)
-                        percentageEffect.stop()
-                    percentageEffect.start()
-                }
-
-                NumberAnimation on opacity {
-                    id: percentageEffect
-                    from: 0; to: 1
-                    duration: 500
-                    easing.type: Easing.OutQuad
-                }
-            }
-
-            Text {
-                id: percentageUnit
-                height: parent.height * 0.2
-                anchors.left: percentageLabel.left
-                anchors.leftMargin: percentageLabel.contentWidth + 1
-                anchors.baseline: percentageLabel.baseline
-                fontSizeMode: Text.VerticalFit
-                font.pixelSize: 34
-                font.family: "Overpass"
-                color: "black"
-                text: "%"
-            }
-        }
-
-        Text {
-            id: nameLabel
-            anchors {
-                top: percentageBadge.bottom
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-                margins: 6
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            fontSizeMode: Text.Fit
-            font.pixelSize: 45
-            font.family: "LiHei Pro"
-            color: "white"
-            text: updateText(root.candidateName)
-
-            function updateText(source) {
-                var target = ""
-                for (var i in source)
-                    target += source[i] + "\n"
-                nameLabel.text = target.trim()
-            }
-        }
+    Image {
+        anchors.fill: parent
+        source: "qrc:/assets/spectacle.svg"
     }
 
     Image {
         id: avatar
-        width: parent.width * 0.25
-        height: parent.height
-        anchors.left: nameBadge.right
+        height: parent.height * (5 / 6)
+        width: parent.width / 3
+        anchors.top: parent.top
+        anchors.right: parent.right
+
         fillMode: Image.PreserveAspectCrop
+        clip: false
     }
 
-    Row {
-        id: labels
-        anchors.left: avatar.right
-        anchors.leftMargin: -root.border.width
-        width: parent.width * 0.65
-        spacing: parent.width * 0.005
+    Text {
+        id: nameLabel
+        anchors.baseline: percentageUnit.baseline
+        font.pixelSize: root.height / 8
+        font.weight: Font.Bold
+        font.family: "Pingfang TC"
+        color: Qt.lighter(root.partyColor, 1.33)
+        text: root.candidateName
+    }
 
-        Text {
-            id: majorLabel
-            width: labels.width * 0.375
-            fontSizeMode: Text.HorizontalFit
-            font.pointSize: 112
-            font.weight: Font.DemiBold
-            font.letterSpacing: -5
-            font.family: "Overpass"
-            color: root.partyColor
-            text: app.padRight(root.majorUnit, 3, " ")
-            transformOrigin: Item.TopLeft
-            transform: [
-                Scale { yScale: root.height / majorLabel.contentHeight * 1.25 }
-            ]
+    Text {
+        id: percentageLabel
+        anchors.right: percentageUnit.left
+        anchors.baseline: percentageUnit.baseline
 
-            onTextChanged: majorEffect.play()
-            ParallelAnimation {
-                id: majorEffect
-                NumberAnimation {
-                    target: majorLabel
-                    property: "y"
-                    from: root.height * 0.2; to: 0
-                    easing.type: Easing.OutElastic
-                    duration: 500
-                }
-                NumberAnimation {
-                    target: majorLabel
-                    property: "opacity"
-                    from: 0; to: 1
-                    easing.type: Easing.OutElastic
-                    duration: 500
-                }
+        font.pixelSize: root.height / 6
+        font.weight: Font.DemiBold
+        font.family: "Overpass"
+        color: Qt.lighter(root.partyColor, 1.33)
+        text: Math.round(root.percentage * 100)
 
-                function play() {
-                    if (majorEffect.running)
-                        majorEffect.stop()
-                    majorEffect.start()
-                }
+        onTextChanged: {
+            if (percentageEffect.running)
+                percentageEffect.stop()
+            percentageEffect.start()
+        }
+
+        NumberAnimation on opacity {
+            id: percentageEffect
+            from: 0; to: 1
+            duration: 500
+            easing.type: Easing.OutQuad
+        }
+    }
+
+
+    Text {
+        id: percentageUnit
+        anchors.right: parent.right
+        anchors.baseline: parent.bottom
+        anchors.baselineOffset: -root.height / 40
+
+        font.pixelSize: root.height / 6 * 0.8
+        font.family: "Overpass"
+        color: percentageLabel.color
+        text: "%"
+    }
+
+    Text {
+        id: majorLabel
+        width: root.width / 2
+        height: root.height / 2
+        horizontalAlignment: Text.AlignRight
+
+        font.pixelSize: height
+        font.weight: Font.DemiBold
+        font.letterSpacing: -10
+        font.family: "Overpass"
+
+        color: "white"
+        text: root.majorUnit
+
+        onTextChanged: majorEffect.play()
+
+        ParallelAnimation {
+            id: majorEffect
+            NumberAnimation {
+                target: majorLabel
+                property: "y"
+                from: 40; to: 0
+                easing.type: Easing.OutElastic
+                duration: 500
+            }
+            NumberAnimation {
+                target: majorLabel
+                property: "opacity"
+                from: 0; to: 1
+                easing.type: Easing.OutElastic
+                duration: 500
+            }
+
+            function play() {
+                if (majorEffect.running)
+                    majorEffect.stop()
+                majorEffect.start()
             }
         }
+    }
 
-        Text {
-            id: unitLabel
-            y: root.height * 0.5
-            width: labels.width * 0.1
-            fontSizeMode: Text.HorizontalFit
-            font.pointSize: 56
-            font.weight: Font.DemiBold
-            font.family: "Pingfang TC"
-            color: root.partyColor
-            text: "萬"
-            transformOrigin: Item.TopLeft
-            transform: [
-                Scale { yScale: root.height * 0.5 / unitLabel.contentHeight }
-            ]
-        }
+    Text {
+        id: unitLabel1
+        anchors.left: root.horizontalCenter
+        anchors.bottom: root.verticalCenter
+        font.pixelSize: root.height / 6
+        font.weight: Font.DemiBold
+        font.family: "Pingfang TC"
+        color: "white"
+        text: "萬"
+    }
 
-        Text {
-            id: minorLabel
-            width: labels.width * 0.5
-            fontSizeMode: Text.HorizontalFit
-            font.pointSize: 112
-            font.weight: Font.DemiBold
-            font.letterSpacing: -5
-            font.family: "Overpass"
-            color: root.partyColor
-            text: app.padRight(root.minorUnit, 4, "0")
-            transformOrigin: Item.TopLeft
-            transform: [
-                Scale { yScale: root.height / minorLabel.contentHeight * 1.25 }
-            ]
-        }
+    Text {
+        id: minorLabel
+        width: root.width / 2
+        height: root.height / 3
+        x: root.width / 8
+        y: root.height / 2
+        horizontalAlignment: Text.AlignRight
+
+        font.pointSize: height
+        font.weight: Font.DemiBold
+        font.letterSpacing: -5
+        font.family: "Overpass"
+
+        color: "white"
+        text: root.minorUnit
+    }
+
+    Text {
+        id: unitLabel2
+        anchors.left: minorLabel.right
+        anchors.baseline: minorLabel.baseline
+        font.pixelSize: root.height / 6
+        font.weight: Font.DemiBold
+        font.family: "Pingfang TC"
+        color: "white"
+        text: "票"
     }
 
     Image {
         id: electedIcon
         anchors.bottom: parent.bottom
-        anchors.horizontalCenter: avatar.right
+        anchors.horizontalCenter: avatar.left
         width: 64
         height: 64
         source: "qrc:/assets/elected.png"
