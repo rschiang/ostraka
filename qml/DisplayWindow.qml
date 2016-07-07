@@ -15,6 +15,13 @@ Window {
     }
 
     Image {
+        id: background
+        anchors.fill: parent
+        source: "qrc:/assets/background.jpg"
+        fillMode: Image.PreserveAspectCrop
+    }
+
+    Image {
         id: logo
         width: parent.width * 0.1
         height: width
@@ -39,7 +46,9 @@ Window {
             top: parent.top
             bottom: statusBar.top
             left: parent.left
+            margins: 8
         }
+        spacing: 8
 
         CandidateItem {
             width: parent.width
@@ -198,13 +207,12 @@ Window {
                 anchors.margins: 6
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.Fit
-                font.pointSize: 56
-                font.weight: Font.Bold
-                font.letterSpacing: -2
+                font.pixelSize: parent.height * 0.75
+                font.weight: Font.Normal
+                font.letterSpacing: -5
                 font.family: "Overpass"
-                color: "white"
-                text: "12:07:05"
+                color: "black"
+                text: "12:07"
             }
 
             Timer {
@@ -218,8 +226,7 @@ Window {
                     var minute = date.getMinutes()
                     var second = date.getSeconds()
                     clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
-                                 (minute >= 10 ? minute : "0" + minute) + ":" +
-                                 (second >= 10 ? second : "0" + second)
+                                 (minute >= 10 ? minute : "0" + minute)
                 }
             }
         }
