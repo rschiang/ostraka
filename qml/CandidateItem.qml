@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
     id: root
+    property int candidateNumber
     property string candidateName
     property int majorUnit
     property int minorUnit
@@ -12,6 +13,14 @@ Rectangle {
 
     color: partyColor
 
+    // Events
+    onPercentageChanged: {
+        var p = (percentage * 100).toFixed(2) + '%'
+        percentMajorLabel.text = p.substring(0, p.indexOf('.'))
+        percentMinorLabel.text = p.substring(p.indexOf('.'))
+    }
+
+    // Components
     DropShadow {}
 
     Image {
@@ -21,61 +30,92 @@ Rectangle {
 
     Image {
         id: avatar
-        height: parent.height * (5 / 6)
+        anchors {
+            top: parent.top
+            right: parent.right
+        }
         width: parent.width / 3
-        anchors.top: parent.top
-        anchors.right: parent.right
-
+        height: parent.height * (5 / 6)
         fillMode: Image.PreserveAspectCrop
-        clip: false
+    }
+
+    Rectangle {
+        id: numberBlock
+        anchors {
+            top: percentBlock.top
+            bottom: percentBlock.bottom
+            left: parent.left
+        }
+        width: height
+        color: Qt.lighter(root.partyColor, 1.66)
+
+        Text {
+            id: numberLabel
+            anchors.centerIn: parent
+
+            font.pointSize: 28 * window.scaleFactor
+            font.weight: Font.DemiBold
+            font.family: "Overpass"
+            color: Qt.darker(root.partyColor, 3.0)
+            text: root.candidateNumber
+        }
     }
 
     Text {
         id: nameLabel
-        anchors.baseline: percentageUnit.baseline
-        font.pixelSize: root.height / 8
-        font.weight: Font.Bold
+        anchors {
+            left: numberBlock.right
+            leftMargin: 5
+            verticalCenter: numberBlock.verticalCenter
+        }
+
+        font.pointSize: 28 * window.scaleFactor
+        font.weight: Font.Normal
         font.family: "Pingfang TC"
-        color: Qt.lighter(root.partyColor, 1.33)
+        color: Qt.lighter(root.partyColor, 1.66)
         text: root.candidateName
     }
 
-    Text {
-        id: percentageLabel
-        anchors.right: percentageUnit.left
-        anchors.baseline: percentageUnit.baseline
+    Rectangle {
+        id: percentBlock
+        anchors {
+            top: avatar.bottom
+            right: parent.right
+            bottom: parent.bottom
+            left: avatar.left
+        }
+        color: Qt.darker(root.partyColor, 3.0)
 
-        font.pixelSize: root.height / 6
-        font.weight: Font.DemiBold
-        font.family: "Overpass"
-        color: Qt.lighter(root.partyColor, 1.33)
-        text: Math.round(root.percentage * 100)
+        Text {
+            id: percentMajorLabel
+            anchors {
+                verticalCenter: parent.verticalCenter
+                right: percentMinorLabel.left
+            }
 
-        onTextChanged: {
-            if (percentageEffect.running)
-                percentageEffect.stop()
-            percentageEffect.start()
+            font.pointSize: 36 * window.scaleFactor
+            font.letterSpacing: -2
+            font.family: "Overpass"
+            font.weight: Font.DemiBold
+            color: root.partyColor
+            text: "0"
         }
 
-        NumberAnimation on opacity {
-            id: percentageEffect
-            from: 0; to: 1
-            duration: 500
-            easing.type: Easing.OutQuad
+        Text {
+            id: percentMinorLabel
+            anchors {
+                baseline: percentMajorLabel.baseline
+                right: parent.right
+                rightMargin: 5
+            }
+
+            font.pointSize: 28 * window.scaleFactor
+            font.letterSpacing: -2
+            font.family: "Overpass"
+            font.weight: Font.DemiBold
+            color: root.partyColor
+            text: ".00%"
         }
-    }
-
-
-    Text {
-        id: percentageUnit
-        anchors.right: parent.right
-        anchors.baseline: parent.bottom
-        anchors.baselineOffset: -root.height / 40
-
-        font.pixelSize: root.height / 6 * 0.8
-        font.family: "Overpass"
-        color: percentageLabel.color
-        text: "%"
     }
 
     Text {

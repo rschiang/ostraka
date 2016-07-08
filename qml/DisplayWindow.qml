@@ -82,6 +82,7 @@ Window {
         width: boundary.columnWidth
         height: boundary.threeRowHeight
 
+        candidateNumber: 1
         candidateName: party1.candidateName
         partyColor: party1.partyColor
         majorUnit: party1.majorUnit
@@ -101,6 +102,7 @@ Window {
         width: boundary.columnWidth
         height: boundary.threeRowHeight
 
+        candidateNumber: 2
         candidateName: party2.candidateName
         partyColor: party2.partyColor
         majorUnit: party2.majorUnit
@@ -120,6 +122,7 @@ Window {
         width: boundary.columnWidth
         height: boundary.threeRowHeight
 
+        candidateNumber: 3
         candidateName: party3.candidateName
         partyColor: party3.partyColor
         majorUnit: party3.majorUnit
