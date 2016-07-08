@@ -163,7 +163,7 @@ Window {
 
     Rectangle {
         id: titleBar
-        height: parent.height * 0.16
+        height: parent.height / 10
         anchors.left: candidates.right
         anchors.right: parent.right
         anchors.bottom: statusBar.top
@@ -176,7 +176,7 @@ Window {
             font.pointSize: 112
             font.weight: Font.Bold
             font.letterSpacing: -5
-            font.family: "Hiragino Kaku Gothic ProN"
+            font.family: "Pingfang TC"
             color: "black"
             text: app.titleText
 
@@ -196,39 +196,10 @@ Window {
         height: parent.height * 0.1
         anchors.bottom: parent.bottom
 
-        Item {
+        ClockItem {
             id: clockArea
             width: parent.width * 0.15
             height: parent.height
-
-            Text {
-                id: clock
-                anchors.fill: parent
-                anchors.margins: 6
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.pixelSize: parent.height * 0.75
-                font.weight: Font.Normal
-                font.letterSpacing: -5
-                font.family: "Overpass"
-                color: "black"
-                text: "12:07"
-            }
-
-            Timer {
-                interval: 1000
-                running: true
-                repeat: true
-                triggeredOnStart: true
-                onTriggered: {
-                    var date = new Date()
-                    var hour = date.getHours()
-                    var minute = date.getMinutes()
-                    var second = date.getSeconds()
-                    clock.text = (hour >= 10 ? hour : "0" + hour) + ":" +
-                                 (minute >= 10 ? minute : "0" + minute)
-                }
-            }
         }
 
         Item {

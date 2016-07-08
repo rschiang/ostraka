@@ -11,7 +11,8 @@ Rectangle {
     property bool elected: false
 
     color: partyColor
-    clip: true
+
+    DropShadow {}
 
     Image {
         anchors.fill: parent
