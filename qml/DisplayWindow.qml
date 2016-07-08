@@ -14,6 +14,7 @@ Window {
 
     // Display properties
     property real scaleFactor: height / 900.0
+    property int marginUnit: 15 * scaleFactor
 
     // Events
     Component.onCompleted: {
@@ -41,20 +42,39 @@ Window {
         smooth: false
     }
 
-    Column {
-        id: candidates
-        width: window.width / 4
+    GridLayout {
+        id: grid
         anchors {
-            top: parent.top
-            bottom: statusBar.top
-            left: parent.left
-            margins: 8
+            fill: parent
+            topMargin: window.marginUnit
+            rightMargin: window.marginUnit * 2
+            bottomMargin: window.marginUnit
+            leftMargin: window.marginUnit * 2
         }
-        spacing: 8
+
+        columns: 3
+        rows: 11
+        columnSpacing: window.marginUnit
+        rowSpacing: window.marginUnit
+
+        flow: GridLayout.TopToBottom
+
+        Rectangle {
+            id: topStatusBar
+            color: "white"
+
+            Layout.columnSpan: 3
+            Layout.fillWidth: true
+            Layout.preferredHeight: parent.height / 11
+        }
+
 
         CandidateItem {
-            width: parent.width
-            height: parent.height / 3
+            Layout.column: 0
+            Layout.row: 1
+            Layout.rowSpan: 3
+            Layout.preferredWidth: parent.width / 3
+            Layout.fillHeight: true
             candidateName: party1.candidateName
             partyColor: party1.partyColor
             majorUnit: party1.majorUnit
@@ -65,8 +85,11 @@ Window {
         }
 
         CandidateItem {
-            width: parent.width
-            height: parent.height / 3
+            Layout.column: 0
+            Layout.row: 4
+            Layout.rowSpan: 3
+            Layout.preferredWidth: parent.width / 3
+            Layout.fillHeight: true
             candidateName: party2.candidateName
             partyColor: party2.partyColor
             majorUnit: party2.majorUnit
@@ -77,8 +100,11 @@ Window {
         }
 
         CandidateItem {
-            width: parent.width
-            height: parent.height / 3
+            Layout.column: 0
+            Layout.row: 7
+            Layout.rowSpan: 3
+            Layout.preferredWidth: parent.width / 3
+            Layout.fillHeight: true
             candidateName: party3.candidateName
             partyColor: party3.partyColor
             majorUnit: party3.majorUnit
@@ -87,217 +113,146 @@ Window {
             avatar: party3.candidateSource
             elected: party3.candidateElected
         }
-    }
-
-    Row {
-        id: parties
-        height: window.height * 0.25
-        anchors {
-            bottom: titleBar.top
-            left: candidates.right
-            right: parent.right
-        }
-
-        PartyItem {
-            width: parent.width / 3
-            height: parent.height
-            partyName: party1.partyName
-            partyColor: party1.partyColor
-            seats: party1.seats
-            percentage: party1.seatPercentage
-            flagSource: party1.flagSource
-        }
-
-        PartyItem {
-            width: parent.width / 3
-            height: parent.height
-            partyName: party2.partyName
-            partyColor: party2.partyColor
-            seats: party2.seats
-            percentage: party2.seatPercentage
-            flagSource: party2.flagSource
-        }
-
-        PartyItem {
-            width: parent.width / 3
-            height: parent.height
-            partyName: party3.partyName
-            partyColor: party3.partyColor
-            seats: party3.seats
-            percentage: party3.seatPercentage
-            flagSource: party3.flagSource
-        }
-    }
-
-    PieChart {
-        id: screen
-        anchors {
-            top: parent.top
-            bottom: parties.top
-            left: candidates.right
-            right: parent.right
-        }
-
-        items: [
-            ChartItem {
-                text: party1.candidateName
-                color: party1.partyColor
-                percentage: party1.candidatePercentage
-            },
-            ChartItem {
-                text: party2.candidateName
-                color: party2.partyColor
-                percentage: party2.candidatePercentage
-            },
-            ChartItem {
-                text: party3.candidateName
-                color: party3.partyColor
-                percentage: party3.candidatePercentage
-            },
-            ChartItem {
-                color: "#424242"
-                percentage: (1 - party1.candidatePercentage
-                               - party2.candidatePercentage
-                               - party3.candidatePercentage)
-            }
-        ]
-    }
-
-    Rectangle {
-        id: titleBar
-        height: parent.height / 10
-        anchors.left: candidates.right
-        anchors.right: parent.right
-        anchors.bottom: statusBar.top
-        color: "orange"
-
-        Text {
-            id: titleLabel
-            x: parent.width * 0.05
-            y: parent.height * 0.02
-            font.pointSize: 112
-            font.weight: Font.Bold
-            font.letterSpacing: -5
-            font.family: "Pingfang TC"
-            color: "black"
-            text: app.titleText
-
-            transformOrigin: Item.TopLeft
-            transform: [
-                Scale {
-                    xScale: Math.min(titleBar.width * 0.9 / titleLabel.contentWidth, 1)
-                    yScale: titleBar.height * 0.96 / titleLabel.contentHeight
-                }
-            ]
-        }
-    }
-
-    Item {
-        id: statusBar
-        width: parent.width
-        height: parent.height * 0.1
-        anchors.bottom: parent.bottom
-
-        ClockItem {
-            id: clockArea
-            width: parent.width * 0.15
-            height: parent.height
-        }
 
         Item {
-            id: marquee
-            height: parent.height
-            anchors.left: clockArea.right
-            anchors.right: parent.right
-            clip: true
+            id: statusBar
+            Layout.columnSpan: 3
+            Layout.fillWidth: true
+            Layout.preferredHeight: parent.height / 11
 
-            GridLayout {
-                id: marqueeItems
-                width: parent.width
-                columns: 4
-                rowSpacing: 0
+            ClockItem {
+                id: clockArea
+                width: parent.width * 0.15
+                height: parent.height
+            }
 
-                property int itemWidth: marquee.width / marqueeItems.columns
+            Item {
+                id: marquee
+                height: parent.height
+                anchors.left: clockArea.right
+                anchors.right: parent.right
+                clip: true
 
-                Repeater {
-                    model: party1.nationalCandidates
+                GridLayout {
+                    id: marqueeItems
+                    width: parent.width
+                    columns: 4
+                    rowSpacing: 0
 
-                    SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
-                        seatName: modelData
-                        partyColor: party1.partyColor
-                        flagSource: party1.flagSource
-                        elected: index < party1.seats
+                    property int itemWidth: marquee.width / marqueeItems.columns
+
+                    Repeater {
+                        model: party1.nationalCandidates
+
+                        SeatItem {
+                            Layout.preferredHeight: marquee.height
+                            Layout.preferredWidth: marqueeItems.itemWidth
+                            seatName: modelData
+                            partyColor: party1.partyColor
+                            flagSource: party1.flagSource
+                            elected: index < party1.seats
+                        }
+                    }
+
+                    Repeater {
+                        model: party2.nationalCandidates
+
+                        SeatItem {
+                            Layout.preferredHeight: marquee.height
+                            Layout.preferredWidth: marqueeItems.itemWidth
+                            seatName: modelData
+                            partyColor: party2.partyColor
+                            flagSource: party2.flagSource
+                            elected: index < party2.seats
+                        }
+                    }
+
+                    Repeater {
+                        model: party3.nationalCandidates
+
+                        SeatItem {
+                            Layout.preferredHeight: marquee.height
+                            Layout.preferredWidth: marqueeItems.itemWidth
+                            seatName: modelData
+                            partyColor: party3.partyColor
+                            flagSource: party3.flagSource
+                            elected: index < party3.seats
+                        }
                     }
                 }
 
-                Repeater {
-                    model: party2.nationalCandidates
+                Text {
+                    id: marqueeTitle
+                    width: parent.width
+                    height: marquee.height
+                    anchors.top: marqueeItems.bottom
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    fontSizeMode: Text.Fit
+                    font.pointSize: 56
+                    font.letterSpacing: 2
+                    font.family: "LiHei Pro"
+                    color: "white"
+                    text: "中華民國不分區立委"
+                }
 
-                    SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
-                        seatName: modelData
-                        partyColor: party2.partyColor
-                        flagSource: party2.flagSource
-                        elected: index < party2.seats
+                NumberAnimation {
+                    id: scrollMarqueeEffect
+                    target: marqueeItems
+                    property: "y"
+                    from: 0
+                    to: -marquee.height
+                    easing.type: Easing.OutBack
+                    duration: 1000
+                    onStopped: {
+                        from = to
+                        to = from - marquee.height
+                        if (-to >= marqueeItems.height) {
+                            from = marquee.height
+                            to = 0
+                        }
                     }
                 }
 
-                Repeater {
-                    model: party3.nationalCandidates
-
-                    SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
-                        seatName: modelData
-                        partyColor: party3.partyColor
-                        flagSource: party3.flagSource
-                        elected: index < party3.seats
-                    }
+                Timer {
+                    interval: 7000
+                    repeat: true
+                    running: true
+                    onTriggered: scrollMarqueeEffect.start()
                 }
             }
+        }
 
-            Text {
-                id: marqueeTitle
-                width: parent.width
-                height: marquee.height
-                anchors.top: marqueeItems.bottom
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.Fit
-                font.pointSize: 56
-                font.letterSpacing: 2
-                font.family: "LiHei Pro"
-                color: "white"
-                text: "中華民國不分區立委"
-            }
+        PieChart {
+            id: screen
+            Layout.columnSpan: 2
+            Layout.rowSpan: 9
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-            NumberAnimation {
-                id: scrollMarqueeEffect
-                target: marqueeItems
-                property: "y"
-                from: 0
-                to: -marquee.height
-                easing.type: Easing.OutBack
-                duration: 1000
-                onStopped: {
-                    from = to
-                    to = from - marquee.height
-                    if (-to >= marqueeItems.height) {
-                        from = marquee.height
-                        to = 0
-                    }
+            items: [
+                ChartItem {
+                    text: party1.candidateName
+                    color: party1.partyColor
+                    percentage: party1.candidatePercentage
+                },
+                ChartItem {
+                    text: party2.candidateName
+                    color: party2.partyColor
+                    percentage: party2.candidatePercentage
+                },
+                ChartItem {
+                    text: party3.candidateName
+                    color: party3.partyColor
+                    percentage: party3.candidatePercentage
+                },
+                ChartItem {
+                    color: "#424242"
+                    percentage: (1 - party1.candidatePercentage
+                                   - party2.candidatePercentage
+                                   - party3.candidatePercentage)
                 }
-            }
-
-            Timer {
-                interval: 7000
-                repeat: true
-                running: true
-                onTriggered: scrollMarqueeEffect.start()
-            }
+            ]
         }
     }
 }
