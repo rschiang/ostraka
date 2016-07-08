@@ -13,7 +13,7 @@
         <file>qml/ClockItem.qml</file>
         <file>qml/DropShadow.qml</file>
         <file>qml/Config.js</file>
-        <file>assets/logo.png</file>
+        <file>assets/logo.svg</file>
         <file>assets/background.jpg</file>
         <file>assets/elected.png</file>
         <file>assets/spectacle.svg</file>

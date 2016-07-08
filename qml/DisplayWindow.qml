@@ -4,16 +4,23 @@ import QtQuick.Layouts 1.1
 
 Window {
     id: window
+
+    // Basic settings
+    color: "black"
     title: "Ostraka"
+    visible: true
     width: 800
     height: 600
-    visible: true
-    color: "black"
 
+    // Display properties
+    property real scaleFactor: height / 900.0
+
+    // Events
     Component.onCompleted: {
         window.flags |= Qt.WindowDoesNotAcceptFocus
     }
 
+    // Components
     Image {
         id: background
         anchors.fill: parent
@@ -23,19 +30,14 @@ Window {
 
     Image {
         id: logo
-        width: parent.width * 0.1
-        height: width
         anchors {
             top: parent.top
             right: parent.right
-            topMargin: parent.height * 0.05
-            rightMargin: parent.width * 0.05
+            topMargin: 30 * window.scaleFactor
+            rightMargin: 30 * window.scaleFactor
         }
         z: 100
-        horizontalAlignment: Image.AlignRight
-        verticalAlignment: Image.AlignTop
-        fillMode: Image.PreserveAspectFit
-        source: "qrc:/assets/logo.png"
+        source: "qrc:/assets/logo.svg"
         smooth: false
     }
 
