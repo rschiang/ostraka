@@ -12,6 +12,7 @@
         <file>qml/ChartItem.qml</file>
         <file>qml/SubtitleItem.qml</file>
         <file>qml/ClockItem.qml</file>
+        <file>qml/MarqueeItem.qml</file>
         <file>qml/DropShadow.qml</file>
         <file>qml/Config.js</file>
         <file>assets/logo.svg</file>

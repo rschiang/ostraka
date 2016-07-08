@@ -13,9 +13,10 @@ Row {
     Image {
         id: flag
         anchors.verticalCenter: parent.verticalCenter
-        width: 60 * window.scaleFactor
+        width: 56 * window.scaleFactor
         height: width
         fillMode: Image.PreserveAspectCrop
+        smooth: false
     }
 
     Text {

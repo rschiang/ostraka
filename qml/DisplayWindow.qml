@@ -70,6 +70,47 @@ Window {
         color: "#212121"
 
         DropShadow {}
+
+        Text {
+            id: topIndicator
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                leftMargin: 10
+            }
+
+            font.pointSize: 42 * window.scaleFactor
+            font.letterSpacing: -2
+            font.family: "Pingfang TC"
+            font.weight: Font.DemiBold
+            color: "white"
+            text: "區域立委"
+        }
+
+        MarqueeItem {
+            id: topMarquee
+            anchors {
+                top: parent.top
+                right: parent.right
+                bottom: parent.bottom
+                left: topIndicator.right
+                leftMargin: window.marginUnit
+            }
+            speed: 8000
+
+            Repeater {
+                model: party1.localCandidates
+
+                SeatItem {
+                    height: topMarquee.height
+                    seatName: modelData
+                    partyColor: party1.partyColor
+                    flagSource: party1.flagSource
+                    elected: index < party1.seats
+                }
+            }
+        }
     }
 
     CandidateItem {
@@ -196,72 +237,66 @@ Window {
 
         DropShadow {}
 
-        Item {
+        Text {
+            id: indicator
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                leftMargin: 10
+            }
+
+            font.pointSize: 42 * window.scaleFactor
+            font.letterSpacing: -2
+            font.family: "Pingfang TC"
+            font.weight: Font.DemiBold
+            color: "white"
+            text: "不分區立委"
+        }
+
+        MarqueeItem {
             id: marquee
             anchors {
                 top: parent.top
                 right: clock.left
                 bottom: parent.bottom
-                left: parent.left
+                left: indicator.right
+                leftMargin: window.marginUnit
             }
-            clip: true
 
-            Row {
-                id: marqueeItems
-                spacing: window.marginUnit * 2
+            Repeater {
+                model: party1.nationalCandidates
 
-                Repeater {
-                    model: party1.nationalCandidates
-
-                    SeatItem {
-                        height: marquee.height
-                        seatName: modelData
-                        partyColor: party1.partyColor
-                        flagSource: party1.flagSource
-                        elected: index < party1.seats
-                    }
-                }
-
-                Repeater {
-                    model: party2.nationalCandidates
-
-                    SeatItem {
-                        height: marquee.height
-                        seatName: modelData
-                        partyColor: party2.partyColor
-                        flagSource: party2.flagSource
-                        elected: index < party2.seats
-                    }
-                }
-
-                Repeater {
-                    model: party3.nationalCandidates
-
-                    SeatItem {
-                        height: marquee.height
-                        seatName: modelData
-                        partyColor: party3.partyColor
-                        flagSource: party3.flagSource
-                        elected: index < party3.seats
-                    }
+                SeatItem {
+                    height: marquee.height
+                    seatName: modelData
+                    partyColor: party1.partyColor
+                    flagSource: party1.flagSource
+                    elected: index < party1.seats
                 }
             }
 
-            NumberAnimation {
-                id: scrollMarqueeEffect
-                target: marqueeItems
-                property: "x"
-                duration: 10000
-                onStopped: scroll()
-                Component.onCompleted: scroll()
+            Repeater {
+                model: party2.nationalCandidates
 
-                function scroll() {
-                    to = marqueeItems.x - marquee.width
-                    if (-to >= (marquee.width + marqueeItems.width)) {
-                        marqueeItems.x = marquee.width
-                        to = 0
-                    }
-                    start()
+                SeatItem {
+                    height: marquee.height
+                    seatName: modelData
+                    partyColor: party2.partyColor
+                    flagSource: party2.flagSource
+                    elected: index < party2.seats
+                }
+            }
+
+            Repeater {
+                model: party3.nationalCandidates
+
+                SeatItem {
+                    height: marquee.height
+                    seatName: modelData
+                    partyColor: party3.partyColor
+                    flagSource: party3.flagSource
+                    elected: index < party3.seats
                 }
             }
         }
