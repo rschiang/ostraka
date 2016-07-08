@@ -1,34 +1,32 @@
 import QtQuick 2.0
 
-Item {
+Row {
     id: root
     property string seatName
     property color partyColor
     property alias flagSource: flag.source
     property bool elected: false
 
+    spacing: 5
     state: elected ? "elected" : ""
 
     Image {
         id: flag
-        width: parent.height
-        height: parent.height * (2 / 3)
         anchors.verticalCenter: parent.verticalCenter
+        width: 60 * window.scaleFactor
+        height: width
+        fillMode: Image.PreserveAspectCrop
     }
 
     Text {
         id: nameLabel
-        anchors {
-            top: parent.top
-            left: flag.right
-            right: parent.right
-            bottom: parent.bottom
-            margins: 8
-        }
+        anchors.verticalCenter: parent.verticalCenter
         verticalAlignment: Text.AlignVCenter
-        fontSizeMode: Text.Fit
-        font.pointSize: 56
-        font.family: "LiHei Pro"
+
+        font.pointSize: 42 * window.scaleFactor
+        font.letterSpacing: -2
+        font.family: "Pingfang TC"
+        font.weight: Font.Normal
         color: "white"
         text: root.seatName
     }

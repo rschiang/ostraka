@@ -144,8 +144,6 @@ Window {
             bottomMargin: window.marginUnit
         }
 
-        DropShadow {}
-
         items: [
             ChartItem {
                 text: party1.candidateName
@@ -169,6 +167,21 @@ Window {
                                - party3.candidatePercentage)
             }
         ]
+
+        DropShadow {}
+
+        SubtitleItem {
+            anchors {
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+            height: parent.height * 0.12
+
+            color: "#99000000"
+            textColor: "white"
+            text: app.titleText
+        }
     }
 
     Rectangle {
@@ -193,20 +206,15 @@ Window {
             }
             clip: true
 
-            GridLayout {
+            Row {
                 id: marqueeItems
-                width: parent.width
-                columns: 4
-                rowSpacing: 0
-
-                property int itemWidth: marquee.width / marqueeItems.columns
+                spacing: window.marginUnit * 2
 
                 Repeater {
                     model: party1.nationalCandidates
 
                     SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
+                        height: marquee.height
                         seatName: modelData
                         partyColor: party1.partyColor
                         flagSource: party1.flagSource
@@ -218,8 +226,7 @@ Window {
                     model: party2.nationalCandidates
 
                     SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
+                        height: marquee.height
                         seatName: modelData
                         partyColor: party2.partyColor
                         flagSource: party2.flagSource
@@ -231,8 +238,7 @@ Window {
                     model: party3.nationalCandidates
 
                     SeatItem {
-                        Layout.preferredHeight: marquee.height
-                        Layout.preferredWidth: marqueeItems.itemWidth
+                        height: marquee.height
                         seatName: modelData
                         partyColor: party3.partyColor
                         flagSource: party3.flagSource
@@ -241,44 +247,22 @@ Window {
                 }
             }
 
-            Text {
-                id: marqueeTitle
-                width: parent.width
-                height: marquee.height
-                anchors.top: marqueeItems.bottom
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.Fit
-                font.pointSize: 56
-                font.letterSpacing: 2
-                font.family: "LiHei Pro"
-                color: "white"
-                text: "中華民國不分區立委"
-            }
-
             NumberAnimation {
                 id: scrollMarqueeEffect
                 target: marqueeItems
-                property: "y"
-                from: 0
-                to: -marquee.height
-                easing.type: Easing.OutBack
-                duration: 1000
-                onStopped: {
-                    from = to
-                    to = from - marquee.height
-                    if (-to >= marqueeItems.height) {
-                        from = marquee.height
+                property: "x"
+                duration: 10000
+                onStopped: scroll()
+                Component.onCompleted: scroll()
+
+                function scroll() {
+                    to = marqueeItems.x - marquee.width
+                    if (-to >= (marquee.width + marqueeItems.width)) {
+                        marqueeItems.x = marquee.width
                         to = 0
                     }
+                    start()
                 }
-            }
-
-            Timer {
-                interval: 7000
-                repeat: true
-                running: true
-                onTriggered: scrollMarqueeEffect.start()
             }
         }
 

@@ -10,6 +10,7 @@
         <file>qml/PieChart.qml</file>
         <file>qml/PieChart.js</file>
         <file>qml/ChartItem.qml</file>
+        <file>qml/SubtitleItem.qml</file>
         <file>qml/ClockItem.qml</file>
         <file>qml/DropShadow.qml</file>
         <file>qml/Config.js</file>
