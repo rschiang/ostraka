@@ -39,6 +39,21 @@ Rectangle {
         fillMode: Image.PreserveAspectCrop
     }
 
+
+    Image {
+        id: electedIcon
+        anchors {
+            right: avatar.right
+            bottom: avatar.bottom
+            margins: 5
+        }
+
+        width: 64
+        height: 64
+        source: "qrc:/assets/elected.png"
+        visible: root.elected
+    }
+
     Rectangle {
         id: numberBlock
         anchors {
@@ -70,7 +85,7 @@ Rectangle {
         }
 
         font.pointSize: 28 * window.scaleFactor
-        font.weight: Font.Normal
+        font.weight: Font.DemiBold
         font.family: "Pingfang TC"
         color: Qt.lighter(root.partyColor, 1.66)
         text: root.candidateName
@@ -120,50 +135,28 @@ Rectangle {
 
     Text {
         id: majorLabel
-        width: root.width / 2
-        height: root.height / 2
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.horizontalCenter
+        }
         horizontalAlignment: Text.AlignRight
 
-        font.pixelSize: height
-        font.weight: Font.DemiBold
-        font.letterSpacing: -10
+        font.pointSize: 108 * window.scaleFactor
+        font.letterSpacing: -5
         font.family: "Overpass"
+        font.weight: Font.Bold
 
         color: "white"
         text: root.majorUnit
-
-        onTextChanged: majorEffect.play()
-
-        ParallelAnimation {
-            id: majorEffect
-            NumberAnimation {
-                target: majorLabel
-                property: "y"
-                from: 40; to: 0
-                easing.type: Easing.OutElastic
-                duration: 500
-            }
-            NumberAnimation {
-                target: majorLabel
-                property: "opacity"
-                from: 0; to: 1
-                easing.type: Easing.OutElastic
-                duration: 500
-            }
-
-            function play() {
-                if (majorEffect.running)
-                    majorEffect.stop()
-                majorEffect.start()
-            }
-        }
     }
 
     Text {
         id: unitLabel1
         anchors.left: root.horizontalCenter
-        anchors.bottom: root.verticalCenter
-        font.pixelSize: root.height / 6
+        anchors.baseline: majorLabel.baseline
+
+        font.pointSize: 36 * window.scaleFactor
         font.weight: Font.DemiBold
         font.family: "Pingfang TC"
         color: "white"
@@ -172,13 +165,14 @@ Rectangle {
 
     Text {
         id: minorLabel
-        width: root.width / 2
-        height: root.height / 3
-        x: root.width / 8
-        y: root.height / 2
+        anchors {
+            left: numberBlock.right
+            right: minorUnitLabel.left
+            baseline: minorUnitLabel.baseline
+        }
         horizontalAlignment: Text.AlignRight
 
-        font.pointSize: height
+        font.pointSize: 84 * window.scaleFactor
         font.weight: Font.DemiBold
         font.letterSpacing: -5
         font.family: "Overpass"
@@ -188,23 +182,18 @@ Rectangle {
     }
 
     Text {
-        id: unitLabel2
-        anchors.left: minorLabel.right
-        anchors.baseline: minorLabel.baseline
-        font.pixelSize: root.height / 6
+        id: minorUnitLabel
+        anchors {
+            right: avatar.left
+            rightMargin: 5
+            baseline: avatar.bottom
+        }
+        horizontalAlignment: Text.AlignRight
+
+        font.pointSize: 36 * window.scaleFactor
         font.weight: Font.DemiBold
         font.family: "Pingfang TC"
         color: "white"
         text: "票"
-    }
-
-    Image {
-        id: electedIcon
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: avatar.left
-        width: 64
-        height: 64
-        source: "qrc:/assets/elected.png"
-        visible: root.elected
     }
 }

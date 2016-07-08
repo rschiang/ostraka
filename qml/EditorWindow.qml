@@ -120,7 +120,7 @@ Window {
                         font.pointSize: 14
                         decimals: 0
                         minimumValue: 0
-                        maximumValue: 689
+                        maximumValue: 4689
                         stepSize: 1
                         suffix: " 萬"
                         onValueChanged: {
