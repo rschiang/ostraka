@@ -1,20 +1,19 @@
 import QtQuick 2.1
 
-Item {
+Rectangle {
     id: root
+    color: "#455A64"
+    implicitWidth: 160 * window.scaleFactor
 
     Text {
         id: clock
-        anchors.fill: parent
-        anchors.margins: 6
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.pixelSize: parent.height * 0.75
-        font.weight: Font.Normal
-        font.letterSpacing: -5
+        anchors.centerIn: parent
+        font.pixelSize: 54 * window.scaleFactor
         font.family: "Overpass"
-        color: "black"
-        text: "12:07"
+        font.weight: Font.Light
+        font.letterSpacing: -2
+        color: "white"
+        text: "16:03"
     }
 
     Timer {

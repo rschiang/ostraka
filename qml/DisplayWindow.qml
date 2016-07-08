@@ -61,11 +61,13 @@ Window {
 
         Rectangle {
             id: topStatusBar
-            color: "white"
+            color: "#212121"
 
             Layout.columnSpan: 3
-            Layout.fillWidth: true
+            Layout.preferredWidth: parent.width - 180
             Layout.preferredHeight: parent.height / 11
+
+            DropShadow {}
         }
 
 
@@ -74,6 +76,7 @@ Window {
             Layout.row: 1
             Layout.rowSpan: 3
             Layout.preferredWidth: parent.width / 3
+            Layout.preferredHeight: parent.height * (3 / 11)
             Layout.fillHeight: true
             candidateName: party1.candidateName
             partyColor: party1.partyColor
@@ -89,6 +92,7 @@ Window {
             Layout.row: 4
             Layout.rowSpan: 3
             Layout.preferredWidth: parent.width / 3
+            Layout.preferredHeight: parent.height * (3 / 11)
             Layout.fillHeight: true
             candidateName: party2.candidateName
             partyColor: party2.partyColor
@@ -104,7 +108,7 @@ Window {
             Layout.row: 7
             Layout.rowSpan: 3
             Layout.preferredWidth: parent.width / 3
-            Layout.fillHeight: true
+            Layout.preferredHeight: parent.height * (3 / 11)
             candidateName: party3.candidateName
             partyColor: party3.partyColor
             majorUnit: party3.majorUnit
@@ -114,23 +118,26 @@ Window {
             elected: party3.candidateElected
         }
 
-        Item {
+        Rectangle {
             id: statusBar
+            color: "#212121"
+
+            Layout.column: 0
+            Layout.row: 10
             Layout.columnSpan: 3
             Layout.fillWidth: true
             Layout.preferredHeight: parent.height / 11
 
-            ClockItem {
-                id: clockArea
-                width: parent.width * 0.15
-                height: parent.height
-            }
+            DropShadow {}
 
             Item {
                 id: marquee
-                height: parent.height
-                anchors.left: clockArea.right
-                anchors.right: parent.right
+                anchors {
+                    top: parent.top
+                    right: clock.left
+                    bottom: parent.bottom
+                    left: parent.left
+                }
                 clip: true
 
                 GridLayout {
@@ -221,6 +228,15 @@ Window {
                     onTriggered: scrollMarqueeEffect.start()
                 }
             }
+
+            ClockItem {
+                id: clock
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                    right: parent.right
+                }
+            }
         }
 
         PieChart {
@@ -229,6 +245,8 @@ Window {
             Layout.rowSpan: 9
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            DropShadow {}
 
             items: [
                 ChartItem {
