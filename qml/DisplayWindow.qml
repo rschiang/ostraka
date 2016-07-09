@@ -12,6 +12,11 @@ Window {
     width: 800
     height: 600
 
+    // Resources
+    FontLoader { source: "qrc:/assets/fonts/Overpass-Regular.ttf" }
+    FontLoader { source: "qrc:/assets/fonts/Overpass-Light.ttf" }
+    FontLoader { source: "qrc:/assets/fonts/Overpass-Bold.ttf" }
+
     // Display properties
     property real scaleFactor: height / 900.0
     property int marginUnit: 15 * scaleFactor
