@@ -16,7 +16,7 @@ Rectangle {
             verticalCenter: parent.verticalCenter
         }
 
-        font.pointSize: root.height * 0.7
+        font.pointSize: (root.height > 0) ? root.height * 0.7 : 60
         font.letterSpacing: -3
         font.family: "Pingfang TC"
         font.weight: Font.Bold

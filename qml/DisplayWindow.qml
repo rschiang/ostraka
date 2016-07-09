@@ -18,7 +18,7 @@ Window {
     FontLoader { source: "qrc:/assets/fonts/Overpass-Bold.ttf" }
 
     // Display properties
-    property real scaleFactor: height / 900.0
+    property real scaleFactor: (height > 0) ? height / 900.0 : 1
     property int marginUnit: 15 * scaleFactor
 
     // Events
