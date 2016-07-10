@@ -2,7 +2,7 @@ import QtQuick 2.1
 
 Rectangle {
     id: root
-    color: "#455A64"
+    color: "#455a64"
     implicitWidth: 160 * window.scaleFactor
 
     Text {
@@ -12,7 +12,7 @@ Rectangle {
         font.family: "Overpass"
         font.weight: Font.Light
         font.letterSpacing: -2
-        color: "white"
+        color: "black"
         text: "16:03"
     }
 
