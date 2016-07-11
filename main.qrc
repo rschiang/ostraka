@@ -4,6 +4,7 @@
         <file>qml/EditorWindow.qml</file>
         <file>qml/DisplayWindow.qml</file>
         <file>qml/ChartView.qml</file>
+        <file>qml/CameraView.qml</file>
         <file>qml/CandidateItem.qml</file>
         <file>qml/PartyItem.qml</file>
         <file>qml/SeatItem.qml</file>

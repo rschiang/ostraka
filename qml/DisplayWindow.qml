@@ -129,7 +129,7 @@ Window {
             bottomMargin: window.marginUnit
         }
 
-        source: "ChartView.qml"
+        source: (app.viewState == 'chart' ? "ChartView.qml" : "CameraView.qml")
     }
 
     Rectangle {
