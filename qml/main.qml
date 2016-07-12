@@ -8,7 +8,7 @@ QtObject {
     property string titleText
     property int totalElectors: 13452016
     property int totalSeats: 18
-    property string viewState: "chart"
+    property string viewState: "seats"
 
     // Models
     property list<PartyModel> parties: [

@@ -128,7 +128,9 @@ Window {
             bottomMargin: window.marginUnit
         }
 
-        source: (app.viewState == 'chart' ? "ChartView.qml" : "CameraView.qml")
+        source: (app.viewState == 'chart' ? "ChartView.qml" :
+                 app.viewState == 'seats' ? "LocalSeatView.qml" :
+                                            "CameraView.qml")
     }
 
     Rectangle {

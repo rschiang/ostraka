@@ -27,5 +27,7 @@
         <file>assets/fonts/Overpass-Light.ttf</file>
         <file>assets/fonts/Overpass-Bold.ttf</file>
         <file>qml/three/build/three.js</file>
+        <file>qml/LocalSeatItem.qml</file>
+        <file>qml/LocalSeatView.qml</file>
     </qresource>
 </RCC>
