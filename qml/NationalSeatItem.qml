@@ -66,6 +66,8 @@ Rectangle {
             top: parent.top
             left: numberBlock.right
             leftMargin: 10
+            right: parent.right
+            rightMargin: 10
         }
 
         font.pointSize: 48 * window.scaleFactor
@@ -74,6 +76,13 @@ Rectangle {
         font.weight: Font.Normal
         color: root.textColor
         text: root.partyName
+
+        transformOrigin: Item.TopLeft
+        transform: [
+            Scale {
+                xScale: Math.min(nameLabel.width / nameLabel.contentWidth, 1)
+            }
+        ]
     }
 
     Text {

@@ -153,7 +153,7 @@ Item {
                 right: parent.right
                 bottom: parent.bottom
             }
-            height: 72 * window.scaleFactor
+            height: 64 * window.scaleFactor
 
             color: "#99000000"
             textColor: "white"
