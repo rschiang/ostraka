@@ -18,6 +18,8 @@ Rectangle {
 
     // Components
 
+    DropShadow {}
+
     Image {
         id: flag
         anchors.fill: parent
