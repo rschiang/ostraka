@@ -147,17 +147,32 @@ Item {
 
         DropShadow {}
 
-        SubtitleItem {
+        Rectangle {
+            id: subtitle
             anchors {
                 left: parent.left
                 right: parent.right
                 bottom: parent.bottom
             }
             height: 64 * window.scaleFactor
-
             color: "#99000000"
-            textColor: "white"
-            text: app.titleText
+
+            FlexText {
+                anchors {
+                    left: parent.left
+                    leftMargin: 10
+                    right: parent.right
+                    rightMargin: 10
+                    verticalCenter: parent.verticalCenter
+                }
+
+                font.pointSize: 48 * window.scaleFactor
+                font.letterSpacing: -3
+                font.family: "Pingfang TC"
+                font.weight: Font.Bold
+                color: "white"
+                text: app.titleText
+            }
         }
     }
 }

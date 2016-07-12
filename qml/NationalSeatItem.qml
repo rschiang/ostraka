@@ -60,7 +60,7 @@ Rectangle {
     }
 
 
-    Text {
+    FlexText {
         id: nameLabel
         anchors {
             top: parent.top
@@ -76,13 +76,6 @@ Rectangle {
         font.weight: Font.Normal
         color: root.textColor
         text: root.partyName
-
-        transformOrigin: Item.TopLeft
-        transform: [
-            Scale {
-                xScale: Math.min(nameLabel.width / nameLabel.contentWidth, 1)
-            }
-        ]
     }
 
     Text {
