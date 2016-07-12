@@ -17,6 +17,29 @@ QtObject {
         PartyModel { id: party3 }
     ]
 
+    property list<RegionModel> regions: [
+        RegionModel {
+            name: "選區一"
+            totalElectors: 54
+            candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
+        },
+        RegionModel {
+            name: "選區二"
+            totalElectors: 58
+            candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
+        },
+        RegionModel {
+            name: "選區三"
+            totalElectors: 58
+            candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
+        },
+        RegionModel {
+            name: "選區四"
+            totalElectors: 64
+            candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
+        }
+    ]
+
     // Functions
     function spawn(screen, proto) {
         if (!proto)
@@ -36,6 +59,14 @@ QtObject {
         party1.load(settings[0])
         party2.load(settings[1])
         party3.load(settings[2])
+
+        for (var p in parties)
+            for (var i in parties[p].localCandidates) {
+                var candidate = regions[i].candidates[p]
+                candidate.candidateName = parties[p].localCandidates[i]
+                candidate.partyName = parties[p].partyName
+                candidate.partyColor = parties[p].partyColor
+            }
 
         var screens = Native.getScreens()
         var primaryScreen = Native.getPrimaryScreen()

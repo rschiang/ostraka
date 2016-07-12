@@ -1,52 +1,56 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
-GridLayout {
+RowLayout {
     id: root
     anchors.fill: parent
-
-    columns: 4
-    rows: 4
-    flow: GridLayout.TopToBottom
-
-    columnSpacing: window.marginUnit
-    rowSpacing: window.marginUnit
-
-    BarChart {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-
-        title: "選區一"
-        description: "應選 1 席"
-        items: [
-            ChartItem {
-                color: party1.partyColor
-                percentage: 0.516
-            },
-            ChartItem {
-                color: party2.partyColor
-                percentage: 0.312
-            },
-            ChartItem {
-                color: party3.partyColor
-                percentage: 0.140
-            }
-        ]
-    }
+    spacing: window.marginUnit
 
     Repeater {
-        model: 15
+        model: app.regions
 
-        LocalSeatItem {
+        ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            spacing: window.marginUnit
 
-            candidateNumber: 1
-            candidateName: party1.candidateName
-            partyColor: party1.partyColor
-            majorUnit: party1.majorUnit
-            minorUnit: party1.minorUnit
-            elected: party1.candidateElected
+            BarChart {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+                title: modelData.name
+                description: "應選 1 席"
+                items: [
+                    ChartItem {
+                        color: modelData.candidates[0].partyColor
+                        percentage: modelData.candidates[0].percentage
+                    },
+                    ChartItem {
+                        color: modelData.candidates[1].partyColor
+                        percentage: modelData.candidates[1].percentage
+                    },
+                    ChartItem {
+                        color: modelData.candidates[2].partyColor
+                        percentage: modelData.candidates[2].percentage
+                    }
+                ]
+            }
+
+            Repeater {
+                model: modelData.candidates
+
+                LocalSeatItem {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    candidateNumber: index + 1
+                    candidateName: modelData.candidateName
+                    majorUnit: modelData.majorUnit
+                    minorUnit: modelData.minorUnit
+                    partyColor: modelData.partyColor
+                    elected: modelData.elected
+                }
+            }
         }
     }
 }

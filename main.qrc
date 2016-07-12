@@ -11,6 +11,8 @@
         <file>qml/LocalSeatItem.qml</file>
         <file>qml/SeatItem.qml</file>
         <file>qml/PartyModel.qml</file>
+        <file>qml/RegionModel.qml</file>
+        <file>qml/LocalCandidateModel.qml</file>
         <file>qml/BarChart.qml</file>
         <file>qml/PieChart.qml</file>
         <file>qml/PieChart.js</file>
