@@ -1,15 +1,16 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 
 Rectangle {
     id: root
-    implicitWidth: column.implicitWidth + 2 * margins
-    implicitHeight: column.implicitHeight + 3 * margins + label.height
+    implicitWidth: row.implicitWidth + 2 * margins
+    implicitHeight: row.implicitHeight + 3 * margins + label.height
 
     // Properties
     property int margins: 10
     property alias text: label.text
-    property alias spacing: column.spacing
-    default property alias contents: column.children
+    property alias spacing: row.spacing
+    default property alias contents: row.children
     color: "#B2DFDB"
 
     Text {
@@ -25,8 +26,8 @@ Rectangle {
         color: "#212121"
     }
 
-    Column {
-        id: column
+    RowLayout {
+        id: row
         anchors {
             top: label.bottom
             left: parent.left

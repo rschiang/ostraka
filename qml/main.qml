@@ -7,7 +7,7 @@ QtObject {
     // Properties
     property string titleText
     property int totalElectors: 13452016
-    property int totalSeats: 18
+    property int totalSeats: 10
     property string viewState: "chart"
 
     // Models
@@ -20,22 +20,22 @@ QtObject {
     property list<RegionModel> regions: [
         RegionModel {
             name: "選區一"
-            totalElectors: 54
+            totalBallots: 54
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區二"
-            totalElectors: 58
+            totalBallots: 58
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區三"
-            totalElectors: 58
+            totalBallots: 58
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區四"
-            totalElectors: 64
+            totalBallots: 64
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         }
     ]
