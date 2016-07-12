@@ -7,7 +7,5 @@
       <stop offset="1" stop-color="#000000" stop-opacity="0.503"/>
     </radialGradient>
   </defs>
-  <g id="Party" transform="translate(-1080, -595)">
-    <path d="M1080,595 L1410,595 L1410,805 L1080,805 L1080,595 z" fill="url(#Gradient_1)"/>
-  </g>
+  <path d="M1080,595 L1410,595 L1410,805 L1080,805 L1080,595 z" fill="url(#Gradient_1)"/>
 </svg>
