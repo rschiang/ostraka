@@ -1,3 +1,7 @@
+// Imports
+Qt.include('Strings.js')
+
+// Definitions
 var configNames = {
     "顏色":　"color",
     "旗幟":　"flag",
@@ -7,18 +11,7 @@ var configNames = {
     "不分區立委候選人":　"national_seats",
 }
 
-function isStartWith(s, c) {
-    return s.charAt(0) == c
-}
-
-function partition(str, sep) {
-    var index = str.indexOf(sep)
-    if (index < 0)
-        return [str, "", ""]
-    else
-        return [str.substring(0, index), sep, str.substring(index + sep.length)]
-}
-
+// Functions
 function parse(buf) {
     var lines = buf.split('\n')
     var parties = []

@@ -33,5 +33,6 @@
         <file>assets/fonts/Overpass-Light.ttf</file>
         <file>assets/fonts/Overpass-Bold.ttf</file>
         <file>qml/three/build/three.js</file>
+        <file>qml/Strings.js</file>
     </qresource>
 </RCC>
