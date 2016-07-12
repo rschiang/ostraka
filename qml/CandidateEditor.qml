@@ -12,6 +12,8 @@ Column {
     property alias elected: electedCheckBox.checked
 
     Row {
+        spacing: 5
+
         CheckBox {
             id: electedCheckBox
         }

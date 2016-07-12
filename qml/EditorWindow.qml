@@ -27,46 +27,49 @@ Window {
         }
         spacing: 10
 
-        RowGroup {
-            id: presidentals
-            text: "總統候選人"
+        Row {
             spacing: 10
 
-            Repeater {
-                model: 3
+            ColumnGroup {
+                id: presidentals
+                text: "總統候選人"
 
-                CandidateEditor {
-                    candidateName: app.parties[index].candidateName
-                    onBallotChanged: {
-                        var ballots = ballot * 53000 + Math.round(Math.random() * 500)
-                        majorValue = Math.floor(ballots / 10000)
-                        minorValue = ballots % 10000
-                        percentage = Math.round(ballots * 10000 / app.totalElectors) / 100
+                Repeater {
+                    model: 3
+
+                    CandidateEditor {
+                        candidateName: app.parties[index].candidateName
+                        onBallotChanged: {
+                            var ballots = ballot * 53000 + Math.round(Math.random() * 500)
+                            majorValue = Math.floor(ballots / 10000)
+                            minorValue = ballots % 10000
+                            percentage = Math.round(ballots * 10000 / app.totalElectors) / 100
+                        }
+                        onMajorValueChanged: app.parties[index].majorUnit = majorValue
+                        onMinorValueChanged: app.parties[index].minorUnit = minorValue
+                        onPercentageChanged: app.parties[index].candidatePercentage = percentage / 100
+                        onElectedChanged: app.parties[index].candidateElected = elected
                     }
-                    onMajorValueChanged: app.parties[index].majorUnit = majorValue
-                    onMinorValueChanged: app.parties[index].minorUnit = minorValue
-                    onPercentageChanged: app.parties[index].candidatePercentage = percentage / 100
-                    onElectedChanged: app.parties[index].candidateElected = elected
                 }
             }
-        }
 
-        RowGroup {
-            id: nationalSeats
-            text: "不分區立委"
+            ColumnGroup {
+                id: nationalSeats
+                text: "不分區立委"
 
-            Repeater {
-                model: 3
+                Repeater {
+                    model: 3
 
-                SeatEditor {
-                    partyName: app.parties[index].partyName
-                    onBallotChanged: {
-                        var percent = ballot / 300
-                        percentage = Math.round(percent * 10000) / 100
-                        seats = Math.round(percent * app.totalSeats)
+                    SeatEditor {
+                        partyName: app.parties[index].partyName
+                        onBallotChanged: {
+                            var percent = ballot / 300
+                            percentage = Math.round(percent * 10000) / 100
+                            seats = Math.round(percent * app.totalSeats)
+                        }
+                        onSeatsChanged: app.parties[index].seats = seats
+                        onPercentageChanged: app.parties[index].seatPercentage = percentage / 100
                     }
-                    onSeatsChanged: app.parties[index].seats = seats
-                    onPercentageChanged: app.parties[index].seatPercentage = percentage / 100
                 }
             }
         }
@@ -74,7 +77,6 @@ Window {
         RowGroup {
             id: localSeats
             text: "區域立委"
-            spacing: 10
 
             Repeater {
                 model: 4

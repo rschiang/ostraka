@@ -23,6 +23,7 @@
         <file>qml/DropShadow.qml</file>
         <file>qml/CandidateEditor.qml</file>
         <file>qml/SeatEditor.qml</file>
+        <file>qml/ColumnGroup.qml</file>
         <file>qml/RowGroup.qml</file>
         <file>qml/Config.js</file>
         <file>assets/logo.svg</file>

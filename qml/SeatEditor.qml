@@ -10,6 +10,8 @@ Column {
     property alias percentage: percentSpin.value
 
     Row {
+        spacing: 5
+
         Text {
             id: label
         }
