@@ -99,7 +99,7 @@ Rectangle {
             verticalCenter: paddingItem.verticalCenter
         }
 
-        Text {
+        AnimatedText {
             id: majorLabel
             font.pointSize: 84 * window.scaleFactor
             font.letterSpacing: -5
@@ -119,7 +119,7 @@ Rectangle {
             text: "萬"
         }
 
-        Text {
+        AnimatedText {
             id: minorLabel
             anchors.baseline: majorLabel.baseline
             font.pointSize: 64 * window.scaleFactor

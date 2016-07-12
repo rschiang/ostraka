@@ -132,7 +132,7 @@ Rectangle {
         }
     }
 
-    Text {
+    AnimatedText {
         id: majorLabel
         anchors {
             top: parent.top
@@ -162,7 +162,7 @@ Rectangle {
         text: "萬"
     }
 
-    Text {
+    AnimatedText {
         id: minorLabel
         anchors {
             left: numberBlock.right
@@ -194,5 +194,19 @@ Rectangle {
         font.family: "Pingfang TC"
         color: "white"
         text: "票"
+    }
+
+    Behavior on minorUnit {
+        NumberAnimation {
+            duration: 1200
+            easing.type: Easing.OutCubic
+        }
+    }
+
+    Behavior on percentage {
+        NumberAnimation {
+            duration: 500
+            easing.type: Easing.OutCubic
+        }
     }
 }

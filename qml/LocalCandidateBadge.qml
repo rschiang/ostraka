@@ -58,7 +58,7 @@ Item {
         text: root.name
     }
 
-    Text {
+    AnimatedText {
         id: voteLabel
         anchors {
             baseline: nameLabel.baseline
