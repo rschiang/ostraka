@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="336" height="170" viewBox="0, 0, 336, 170">
+  <defs>
+    <radialGradient id="Gradient_1" gradientUnits="userSpaceOnUse" cx="365" cy="265" r="375.666">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="0.329" stop-color="#000000" stop-opacity="0.7"/>
+      <stop offset="0.662" stop-color="#000000" stop-opacity="0.9"/>
+    </radialGradient>
+  </defs>
+  <g id="Area" transform="translate(-30, -95)">
+    <path d="M30,95 L366,95 L366,265 L30,265 L30,95 z" fill="url(#Gradient_1)" id="overlay"/>
+  </g>
+</svg>

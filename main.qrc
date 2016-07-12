@@ -4,11 +4,14 @@
         <file>qml/EditorWindow.qml</file>
         <file>qml/DisplayWindow.qml</file>
         <file>qml/ChartView.qml</file>
+        <file>qml/LocalSeatView.qml</file>
         <file>qml/CameraView.qml</file>
         <file>qml/CandidateItem.qml</file>
         <file>qml/NationalSeatItem.qml</file>
+        <file>qml/LocalSeatItem.qml</file>
         <file>qml/SeatItem.qml</file>
         <file>qml/PartyModel.qml</file>
+        <file>qml/BarChart.qml</file>
         <file>qml/PieChart.qml</file>
         <file>qml/PieChart.js</file>
         <file>qml/ChartItem.qml</file>
@@ -23,12 +26,12 @@
         <file>assets/elected.png</file>
         <file>assets/spectacle.svg</file>
         <file>assets/overlay.svg</file>
+        <file>assets/ambient.svg</file>
+        <file>assets/bar.svg</file>
         <file>assets/drop_shadow.png</file>
         <file>assets/fonts/Overpass-Regular.ttf</file>
         <file>assets/fonts/Overpass-Light.ttf</file>
         <file>assets/fonts/Overpass-Bold.ttf</file>
         <file>qml/three/build/three.js</file>
-        <file>qml/LocalSeatItem.qml</file>
-        <file>qml/LocalSeatView.qml</file>
     </qresource>
 </RCC>
