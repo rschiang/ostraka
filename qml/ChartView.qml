@@ -1,76 +1,124 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 
 Item {
     id: root
     anchors.fill: parent
 
-    CandidateItem {
-        id: candidate1
+    ColumnLayout {
+        id: candidates
         anchors {
             top: parent.top
+            bottom: parent.bottom
             left: parent.left
         }
         width: boundary.columnWidth
-        height: boundary.threeRowHeight
+        spacing: window.marginUnit
 
-        candidateNumber: 1
-        candidateName: party1.candidateName
-        partyColor: party1.partyColor
-        majorUnit: party1.majorUnit
-        minorUnit: party1.minorUnit
-        percentage: party1.candidatePercentage
-        avatar: party1.candidateSource
-        elected: party1.candidateElected
+        CandidateItem {
+            id: candidate1
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            candidateNumber: 1
+            candidateName: party1.candidateName
+            partyColor: party1.partyColor
+            majorUnit: party1.majorUnit
+            minorUnit: party1.minorUnit
+            percentage: party1.candidatePercentage
+            avatar: party1.candidateSource
+            elected: party1.candidateElected
+        }
+
+        CandidateItem {
+            id: candidate2
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            candidateNumber: 2
+            candidateName: party2.candidateName
+            partyColor: party2.partyColor
+            majorUnit: party2.majorUnit
+            minorUnit: party2.minorUnit
+            percentage: party2.candidatePercentage
+            avatar: party2.candidateSource
+            elected: party2.candidateElected
+        }
+
+        CandidateItem {
+            id: candidate3
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            candidateNumber: 3
+            candidateName: party3.candidateName
+            partyColor: party3.partyColor
+            majorUnit: party3.majorUnit
+            minorUnit: party3.minorUnit
+            percentage: party3.candidatePercentage
+            avatar: party3.candidateSource
+            elected: party3.candidateElected
+        }
     }
 
-    CandidateItem {
-        id: candidate2
+    RowLayout {
+        id: nationalSeats
         anchors {
-            top: candidate1.bottom
-            topMargin: window.marginUnit
-            left: parent.left
+            left: candidates.right
+            leftMargin: window.marginUnit
+            right: parent.right
+            bottom: parent.bottom
         }
-        width: boundary.columnWidth
+
         height: boundary.threeRowHeight
+        spacing: window.marginUnit
 
-        candidateNumber: 2
-        candidateName: party2.candidateName
-        partyColor: party2.partyColor
-        majorUnit: party2.majorUnit
-        minorUnit: party2.minorUnit
-        percentage: party2.candidatePercentage
-        avatar: party2.candidateSource
-        elected: party2.candidateElected
-    }
+        PartyItem {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
 
-    CandidateItem {
-        id: candidate3
-        anchors {
-            top: candidate2.bottom
-            topMargin: window.marginUnit
-            left: parent.left
+            partyNumber: 1
+            partyName: party1.partyName
+            partyColor: party1.partyColor
+            seats: party1.seats
+            percentage: party1.seatPercentage
+            flagSource: party1.flagSource
         }
-        width: boundary.columnWidth
-        height: boundary.threeRowHeight
 
-        candidateNumber: 3
-        candidateName: party3.candidateName
-        partyColor: party3.partyColor
-        majorUnit: party3.majorUnit
-        minorUnit: party3.minorUnit
-        percentage: party3.candidatePercentage
-        avatar: party3.candidateSource
-        elected: party3.candidateElected
+        PartyItem {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            partyNumber: 2
+            partyName: party2.partyName
+            partyColor: party2.partyColor
+            seats: party2.seats
+            percentage: party2.seatPercentage
+            flagSource: party2.flagSource
+        }
+
+        PartyItem {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            partyNumber: 3
+            partyName: party3.partyName
+            partyColor: party3.partyColor
+            seats: party3.seats
+            percentage: party3.seatPercentage
+            flagSource: party3.flagSource
+        }
     }
 
     PieChart {
         id: screen
         anchors {
             top: parent.top
-            left: candidate1.right
-            leftMargin: window.marginUnit
             right: parent.right
-            bottom: parent.bottom
+            bottom: nationalSeats.top
+            bottomMargin: window.marginUnit
+            left: candidates.right
+            leftMargin: window.marginUnit
         }
 
         items: [

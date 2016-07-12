@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="330" height="210" viewBox="0, 0, 330, 210">
+  <defs>
+    <radialGradient id="Gradient_1" gradientUnits="userSpaceOnUse" cx="1080" cy="805" r="391.152">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.657"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.503"/>
+    </radialGradient>
+  </defs>
+  <g id="Party" transform="translate(-1080, -595)">
+    <path d="M1080,595 L1410,595 L1410,805 L1080,805 L1080,595 z" fill="url(#Gradient_1)"/>
+  </g>
+</svg>
