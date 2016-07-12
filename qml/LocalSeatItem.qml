@@ -52,14 +52,12 @@ Rectangle {
     }
 
 
-    FlexText {
+    Text {
         id: nameLabel
         anchors {
             top: parent.top
             left: numberBlock.right
             leftMargin: 10
-            right: parent.right
-            rightMargin: 10
         }
 
         font.pointSize: 56 * window.scaleFactor
@@ -104,18 +102,18 @@ Rectangle {
 
         Text {
             id: majorLabel
-            font.pointSize: 96 * window.scaleFactor
+            font.pointSize: 84 * window.scaleFactor
             font.letterSpacing: -5
             font.family: "Overpass"
-            font.weight: Font.Bold
+            font.weight: Font.Normal
             color: "white"
             text: root.majorUnit
         }
 
         Text {
-            id: unitLabel1
+            id: unitLabel
             anchors.baseline: majorLabel.baseline
-            font.pointSize: 36 * window.scaleFactor
+            font.pointSize: 32 * window.scaleFactor
             font.weight: Font.DemiBold
             font.family: "Pingfang TC"
             color: "white"
@@ -125,8 +123,8 @@ Rectangle {
         Text {
             id: minorLabel
             anchors.baseline: majorLabel.baseline
-            font.pointSize: 72 * window.scaleFactor
-            font.weight: Font.DemiBold
+            font.pointSize: 64 * window.scaleFactor
+            font.weight: Font.Normal
             font.letterSpacing: -5
             font.family: "Overpass"
             color: "white"
