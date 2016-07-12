@@ -87,7 +87,7 @@ function drawPie(angle) {
     var shape = new THREE.Shape()
     shape.moveTo(0, 0)
     shape.ellipse(0, 0, 800, 800, 0, angle, true)
-    return new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 36 })
+    return new THREE.ExtrudeGeometry(shape, { amount: 100, curveSegments: 24 })
 }
 
 function updatePie() {

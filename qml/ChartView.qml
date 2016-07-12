@@ -110,7 +110,7 @@ Item {
         }
     }
 
-    PieChart {
+    Item {
         id: screen
         anchors {
             top: parent.top
@@ -121,31 +121,42 @@ Item {
             leftMargin: window.marginUnit
         }
 
-        items: [
-            ChartItem {
-                text: party1.candidateName
-                color: party1.partyColor
-                percentage: party1.candidatePercentage
-            },
-            ChartItem {
-                text: party2.candidateName
-                color: party2.partyColor
-                percentage: party2.candidatePercentage
-            },
-            ChartItem {
-                text: party3.candidateName
-                color: party3.partyColor
-                percentage: party3.candidatePercentage
-            },
-            ChartItem {
-                color: "#424242"
-                percentage: (1 - party1.candidatePercentage
-                               - party2.candidatePercentage
-                               - party3.candidatePercentage)
-            }
-        ]
-
         DropShadow {}
+
+        PieChart {
+            id: chart
+            anchors {
+                top: parent.top
+                right: parent.right
+                bottom: subtitle.top
+                left: parent.left
+            }
+
+            items: [
+                ChartItem {
+                    text: party1.candidateName
+                    color: party1.partyColor
+                    percentage: party1.candidatePercentage
+                },
+                ChartItem {
+                    text: party2.candidateName
+                    color: party2.partyColor
+                    percentage: party2.candidatePercentage
+                },
+                ChartItem {
+                    text: party3.candidateName
+                    color: party3.partyColor
+                    percentage: party3.candidatePercentage
+                },
+                ChartItem {
+                    color: "#424242"
+                    percentage: (1 - party1.candidatePercentage
+                                   - party2.candidatePercentage
+                                   - party3.candidatePercentage)
+                }
+            ]
+
+        }
 
         Rectangle {
             id: subtitle
@@ -155,7 +166,7 @@ Item {
                 bottom: parent.bottom
             }
             height: 64 * window.scaleFactor
-            color: "#99000000"
+            color: "#1a1a1a"
 
             FlexText {
                 anchors {

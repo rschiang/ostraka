@@ -196,13 +196,6 @@ Rectangle {
         text: "票"
     }
 
-    Behavior on minorUnit {
-        NumberAnimation {
-            duration: 1200
-            easing.type: Easing.OutCubic
-        }
-    }
-
     Behavior on percentage {
         NumberAnimation {
             duration: 500
