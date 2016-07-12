@@ -104,13 +104,13 @@ Window {
             speed: 8000
 
             Repeater {
-                model: party1.localCandidates
+                model: party1.nationalCandidates
 
                 SeatItem {
-                    height: topMarquee.height
-                    seatName: modelData
+                    anchors.verticalCenter: parent.verticalCenter
+                    name: modelData
+                    number: index
                     partyColor: party1.partyColor
-                    flagSource: party1.flagSource
                     elected: index < party1.seats
                 }
             }
@@ -176,10 +176,10 @@ Window {
                 model: party1.nationalCandidates
 
                 SeatItem {
-                    height: marquee.height
-                    seatName: modelData
+                    anchors.verticalCenter: parent.verticalCenter
+                    name: modelData
+                    number: index
                     partyColor: party1.partyColor
-                    flagSource: party1.flagSource
                     elected: index < party1.seats
                 }
             }
@@ -188,10 +188,10 @@ Window {
                 model: party2.nationalCandidates
 
                 SeatItem {
-                    height: marquee.height
-                    seatName: modelData
+                    anchors.verticalCenter: parent.verticalCenter
+                    name: modelData
+                    number: index
                     partyColor: party2.partyColor
-                    flagSource: party2.flagSource
                     elected: index < party2.seats
                 }
             }
@@ -200,10 +200,10 @@ Window {
                 model: party3.nationalCandidates
 
                 SeatItem {
-                    height: marquee.height
-                    seatName: modelData
+                    anchors.verticalCenter: parent.verticalCenter
+                    name: modelData
+                    number: index
                     partyColor: party3.partyColor
-                    flagSource: party3.flagSource
                     elected: index < party3.seats
                 }
             }

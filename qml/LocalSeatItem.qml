@@ -51,7 +51,6 @@ Rectangle {
         }
     }
 
-
     Text {
         id: nameLabel
         anchors {
