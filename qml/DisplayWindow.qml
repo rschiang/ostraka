@@ -75,43 +75,41 @@ Window {
 
         DropShadow {}
 
-        Text {
-            id: topIndicator
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-                leftMargin: 10
-            }
-
-            font.pointSize: 42 * window.scaleFactor
-            font.letterSpacing: -2
-            font.family: "Pingfang TC"
-            font.weight: Font.DemiBold
-            color: "white"
-            text: "區域立委"
-        }
-
         MarqueeItem {
             id: topMarquee
-            anchors {
-                top: parent.top
-                right: parent.right
-                bottom: parent.bottom
-                left: topIndicator.right
-                leftMargin: window.marginUnit
-            }
+            anchors.fill: parent
             speed: 8000
+            spacing: 120 * window.scaleFactor
 
             Repeater {
-                model: party1.nationalCandidates
+                model: app.regions
 
-                SeatItem {
-                    anchors.verticalCenter: parent.verticalCenter
-                    name: modelData
-                    number: index
-                    partyColor: party1.partyColor
-                    elected: index < party1.seats
+                Row {
+                    spacing: 60 * window.scaleFactor
+
+                    Text {
+                        id: regionLabel
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pointSize: 42 * window.scaleFactor
+                        font.letterSpacing: -2
+                        font.family: "Pingfang TC"
+                        font.weight: Font.DemiBold
+                        color: "white"
+                        text: modelData.name
+                    }
+
+                    Repeater {
+                        model: modelData.candidates
+
+                        LocalCandidateBadge {
+                            anchors.verticalCenter: parent.verticalCenter
+                            number: index + 1
+                            name: modelData.candidateName
+                            votes: modelData.majorUnit * 10000 + modelData.minorUnit
+                            partyColor: modelData.partyColor
+                            elected: modelData.elected
+                        }
+                    }
                 }
             }
         }
@@ -159,7 +157,7 @@ Window {
             font.family: "Pingfang TC"
             font.weight: Font.DemiBold
             color: "white"
-            text: "不分區立委"
+            text: "全國不分區"
         }
 
         MarqueeItem {
@@ -175,10 +173,10 @@ Window {
             Repeater {
                 model: party1.nationalCandidates
 
-                SeatItem {
+                CandidateBadge {
                     anchors.verticalCenter: parent.verticalCenter
                     name: modelData
-                    number: index
+                    number: index + 1
                     partyColor: party1.partyColor
                     elected: index < party1.seats
                 }
@@ -187,10 +185,10 @@ Window {
             Repeater {
                 model: party2.nationalCandidates
 
-                SeatItem {
+                CandidateBadge {
                     anchors.verticalCenter: parent.verticalCenter
                     name: modelData
-                    number: index
+                    number: index + 1
                     partyColor: party2.partyColor
                     elected: index < party2.seats
                 }
@@ -199,10 +197,10 @@ Window {
             Repeater {
                 model: party3.nationalCandidates
 
-                SeatItem {
+                CandidateBadge {
                     anchors.verticalCenter: parent.verticalCenter
                     name: modelData
-                    number: index
+                    number: index + 1
                     partyColor: party3.partyColor
                     elected: index < party3.seats
                 }

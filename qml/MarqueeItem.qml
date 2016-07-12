@@ -7,6 +7,7 @@ Item {
     // Properties
     default property alias contents: items.children
     property alias speed: effect.duration
+    property alias spacing: items.spacing
 
     Row {
         id: items

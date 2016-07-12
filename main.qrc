@@ -9,7 +9,8 @@
         <file>qml/CandidateItem.qml</file>
         <file>qml/NationalSeatItem.qml</file>
         <file>qml/LocalSeatItem.qml</file>
-        <file>qml/SeatItem.qml</file>
+        <file>qml/CandidateBadge.qml</file>
+        <file>qml/LocalCandidateBadge.qml</file>
         <file>qml/PartyModel.qml</file>
         <file>qml/RegionModel.qml</file>
         <file>qml/LocalCandidateModel.qml</file>
