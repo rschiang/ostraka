@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.2
+import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
 
 Column {
     id: root
@@ -16,6 +17,24 @@ Column {
 
         CheckBox {
             id: electedCheckBox
+            style: CheckBoxStyle {
+                indicator: Rectangle {
+                    implicitWidth: 20
+                    implicitHeight: 20
+                    radius: 4
+                    border.width: 1
+                    border.color: "#757575"
+
+                    Image {
+                        anchors.centerIn: parent
+                        visible: control.checked
+                        width: 16
+                        height: 16
+                        source: "qrc:/assets/elected.png"
+                        fillMode: Image.PreserveAspectFit
+                    }
+                }
+            }
         }
 
         SpinBox {
