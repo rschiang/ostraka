@@ -39,7 +39,6 @@ Rectangle {
         fillMode: Image.PreserveAspectCrop
     }
 
-
     Image {
         id: electedIcon
         anchors {

@@ -115,7 +115,7 @@ Rectangle {
                     font.letterSpacing: -2
                     font.family: "Overpass"
                     font.weight: Font.DemiBold
-                    color: Qt.lighter(modelData.color, 1.66)
+                    color: Qt.lighter(modelData.color, 1.33)
                     text: (modelData.percentage * 100).toFixed(1) + "%"
                 }
             }

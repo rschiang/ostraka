@@ -40,6 +40,13 @@ GridLayout {
         LocalSeatItem {
             Layout.fillWidth: true
             Layout.fillHeight: true
+
+            candidateNumber: 1
+            candidateName: party1.candidateName
+            partyColor: party1.partyColor
+            majorUnit: party1.majorUnit
+            minorUnit: party1.minorUnit
+            elected: party1.candidateElected
         }
     }
 }
