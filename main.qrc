@@ -6,7 +6,7 @@
         <file>qml/ChartView.qml</file>
         <file>qml/CameraView.qml</file>
         <file>qml/CandidateItem.qml</file>
-        <file>qml/PartyItem.qml</file>
+        <file>qml/NationalSeatItem.qml</file>
         <file>qml/SeatItem.qml</file>
         <file>qml/PartyModel.qml</file>
         <file>qml/PieChart.qml</file>

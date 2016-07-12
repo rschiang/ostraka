@@ -73,7 +73,7 @@ Item {
         height: boundary.threeRowHeight
         spacing: window.marginUnit
 
-        PartyItem {
+        NationalSeatItem {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
@@ -85,7 +85,7 @@ Item {
             flagSource: party1.flagSource
         }
 
-        PartyItem {
+        NationalSeatItem {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
@@ -97,7 +97,7 @@ Item {
             flagSource: party2.flagSource
         }
 
-        PartyItem {
+        NationalSeatItem {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
