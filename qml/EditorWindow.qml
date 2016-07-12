@@ -37,6 +37,7 @@ Window {
         }
 
         text: "總統候選人"
+        color: "#DCEDC8"
 
         Repeater {
             model: 3
@@ -60,12 +61,13 @@ Window {
     RowGroup {
         id: nationalSeats
         anchors {
-            top: parent.top
+            top: subtitles.bottom
             left: presidentals.right
             margins: 10
         }
 
         text: "不分區立委"
+        color: "#B2EBF2"
 
         Repeater {
             model: 3
@@ -92,6 +94,7 @@ Window {
         }
 
         text: "區域立委"
+        color: "#FFECB3"
 
         Repeater {
             model: 4
@@ -126,6 +129,60 @@ Window {
                     }
                 }
             }
+        }
+    }
+
+    RowGroup {
+        id: subtitles
+        anchors {
+            top: parent.top
+            left: presidentals.right
+            margins: 10
+        }
+
+        text: "字幕"
+        spacing: 5
+
+        TextField {
+            id: subtitleField
+            width: 320
+            text: "投票時間結束 各開票所陸續回報狀態中"
+            Keys.onReturnPressed: setSubtitleButton.clicked()
+            Component.onCompleted: setSubtitleButton.clicked()
+        }
+
+        Button {
+            id: setSubtitleButton
+            anchors.baseline: subtitleField.baseline
+            text: "置換"
+            onClicked: if (subtitleField.length) app.titleText = subtitleField.text
+        }
+    }
+
+    RowGroup {
+        id: controls
+        anchors {
+            top: parent.top
+            left: subtitles.right
+            margins: 10
+        }
+
+        text: "導播模式"
+        spacing: 5
+
+        Button {
+            text: "圖表"
+            onClicked: app.viewState = "chart"
+        }
+
+        Button {
+            text: "區域立委"
+            onClicked: app.viewState = "seats"
+        }
+
+        Button {
+            text: "影音"
+            onClicked: app.viewState = "camera"
         }
     }
 }
