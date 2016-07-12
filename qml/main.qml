@@ -7,6 +7,7 @@ QtObject {
     // Properties
     property string titleText
     property int totalElectors: 13452016
+    property int totalBallots: 300
     property int totalSeats: 10
     property string viewState: "chart"
 

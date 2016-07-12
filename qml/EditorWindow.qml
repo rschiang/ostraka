@@ -75,7 +75,7 @@ Window {
             SeatEditor {
                 partyName: app.parties[index].partyName
                 onBallotChanged: {
-                    var percent = ballot / 300
+                    var percent = ballot / app.totalBallots
                     percentage = Math.round(percent * 10000) / 100
                     seats = Math.round(percent * app.totalSeats)
                 }
@@ -128,6 +128,78 @@ Window {
                         onElectedChanged: app.regions[regionIndex].candidates[index].elected = elected
                     }
                 }
+            }
+        }
+    }
+
+    ColumnGroup {
+        id: variables
+        anchors {
+            top: subtitles.bottom
+            left: nationalSeats.right
+            margins: 10
+        }
+
+        text: "參數"
+        spacing: 2
+
+        Row {
+            spacing: 6
+
+            Text {
+                anchors.baseline: seatsSpin.baseline
+                text: "不分區總席次"
+            }
+
+            SpinBox {
+                id: seatsSpin
+                decimals: 0
+                minimumValue: 0
+                maximumValue: 225
+                suffix: " 位"
+                stepSize: 1
+                onValueChanged: app.totalSeats = value
+                Component.onCompleted: value = app.totalSeats
+            }
+        }
+
+        Row {
+            spacing: 6
+
+            Text {
+                anchors.baseline: ballotsSpin.baseline
+                text: "實際選舉人"
+            }
+
+            SpinBox {
+                id: ballotsSpin
+                decimals: 0
+                minimumValue: 0
+                maximumValue: 1000
+                suffix: " 票"
+                stepSize: 1
+                onValueChanged: app.totalBallots = value
+                Component.onCompleted: value = app.totalBallots
+            }
+        }
+
+        Row {
+            spacing: 6
+
+            Text {
+                anchors.baseline: electorsSpin.baseline
+                text: "總選舉人"
+            }
+
+            SpinBox {
+                id: electorsSpin
+                decimals: 0
+                minimumValue: 0
+                maximumValue: 2147483647
+                suffix: " 名"
+                stepSize: 1
+                onValueChanged: app.totalElectors = value
+                Component.onCompleted: value = app.totalElectors
             }
         }
     }

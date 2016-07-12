@@ -23,7 +23,7 @@ Column {
             anchors.baseline: electedCheckBox.baseline
             decimals: 0
             minimumValue: 0
-            maximumValue: 240
+            maximumValue: app.totalBallots
             stepSize: 1
         }
     }
