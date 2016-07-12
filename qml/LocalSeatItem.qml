@@ -34,7 +34,7 @@ Rectangle {
             left: parent.left
             margins: 10
         }
-        width: 64 * window.scaleFactor
+        width: 56 * window.scaleFactor
         height: width
 
         radius: 5
@@ -43,7 +43,7 @@ Rectangle {
         Text {
             id: numberLabel
             anchors.centerIn: parent
-            font.pointSize: 64 * window.scaleFactor
+            font.pointSize: 56 * window.scaleFactor
             font.family: "Overpass"
             font.weight: Font.Light
             color: Qt.darker(root.partyColor, 2.0)
@@ -72,12 +72,12 @@ Rectangle {
         id: electedIcon
         anchors {
             left: nameLabel.right
-            bottom: nameLabel.baseline
-            margins: 5
+            leftMargin: 5
+            verticalCenter: nameLabel.verticalCenter
         }
 
-        width: 56
-        height: 56
+        width: 48
+        height: 48
         source: "qrc:/assets/elected.png"
         visible: root.elected
     }
