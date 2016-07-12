@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtCanvas3D 1.0
+import QtCanvas3D 1.1
 import "PieChart.js" as Script
 
 Canvas3D {
