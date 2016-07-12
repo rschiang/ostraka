@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = Ostraka
-QT += qml quick
+QT += qml quick svg
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
