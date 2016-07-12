@@ -46,7 +46,7 @@ function initializeGL(canvas) {
     // Background rendering
     backScene = new THREE.Scene()
 
-    var texture = THREE.ImageUtils.loadTexture("qrc:/assets/background.jpg")
+    var texture = THREE.ImageUtils.loadTexture("qrc:/assets/aura.jpg")
     background = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2, 0), new THREE.MeshBasicMaterial({ map: texture }))
     background.material.depthTest = false
     background.material.depthWrite = false
