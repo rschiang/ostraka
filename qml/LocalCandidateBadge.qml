@@ -99,7 +99,7 @@ Item {
         },
         Transition {
             to: ""
-            ColorAnimation { target: nameLabel; property: "color"; to: "white"; duration: 200 }
+            ColorAnimation { target: root; property: "textColor"; to: "white"; duration: 200 }
         }
     ]
 }
