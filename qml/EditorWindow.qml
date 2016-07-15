@@ -77,7 +77,7 @@ Window {
                 onBallotChanged: {
                     var percent = ballot / app.totalBallots
                     percentage = Math.round(percent * 10000) / 100
-                    seats = Math.round(percent * app.totalSeats)
+                    seats = Math.floor(percent * app.totalSeats)
                 }
                 onSeatsChanged: app.parties[index].seats = seats
                 onPercentageChanged: app.parties[index].seatPercentage = percentage / 100

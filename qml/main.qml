@@ -21,22 +21,22 @@ QtObject {
     property list<RegionModel> regions: [
         RegionModel {
             name: "選區一"
-            totalBallots: 54
+            totalBallots: 69
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區二"
-            totalBallots: 58
+            totalBallots: 77
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區三"
-            totalBallots: 58
+            totalBallots: 77
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         },
         RegionModel {
             name: "選區四"
-            totalBallots: 64
+            totalBallots: 77
             candidates: [ LocalCandidateModel {}, LocalCandidateModel {}, LocalCandidateModel {} ]
         }
     ]
