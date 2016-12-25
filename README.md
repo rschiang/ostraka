@@ -10,6 +10,15 @@ Prerequisites
 * QML port of [Three.js](https://github.com/tronlec/three.js) (included as submodule)
 * Set up [`ostraka.txt`](ostraka.example.txt) within the same folder of app.
 
+Screenshots
+-----------
+
+![Main screen](docs/presidential.png)
+
+![Local seats](docs/local_seats.png)
+
+![Control pane](docs/control_pane.png)
+
 License
 -------
 Released under [GPLv3](LICENSE.md).
