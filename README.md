@@ -45,6 +45,8 @@ Released under [GPLv3](LICENSE.md). Anyone could freely use or modify this softw
 
 ---
 
+[Ostraka](https://github.com/rschiang/ostraka) authored by Poren Chiang.
+
 Three.js and the QML Three.js fork are under the [MIT License](qml/three/LICENSE.md).
 
 Overpass font is released under [SIL Open Font License](assets/fonts/LICENSE.md).
