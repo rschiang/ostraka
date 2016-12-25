@@ -39,9 +39,9 @@ Shows on the laptop side with a dual display installation; changes would reflect
 License / 授權
 -------
 
-此軟體以 [GNU GPLv3](LICENSE.md) 授權釋出。任何人都可以自由的使用、修改此軟體，惟須同樣以自由軟體形式散布其與其原始碼；詳細資訊請參閱隨附[授權](LICENSE.md)。
+此軟體以 GNU GPLv3 授權釋出。任何人都可以自由的使用、修改此軟體，惟須同樣以自由軟體形式散布其與其原始碼；詳細資訊請參閱隨附[授權](https://github.com/rschiang/ostraka/tree/master/LICENSE.md)。
 
-Released under [GPLv3](LICENSE.md). Anyone could freely use or modify this software, provided that it is distributed as free software with its source code. Refer to [LICENSE](LICENSE.md) for precise terms.
+Released under GPLv3. Anyone could freely use or modify this software, provided that it is distributed as free software with its source code. Refer to [LICENSE](https://github.com/rschiang/ostraka/tree/master/LICENSE.md) for precise terms.
 
 ---
 
